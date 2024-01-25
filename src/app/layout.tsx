@@ -25,11 +25,11 @@ export const metadata: Metadata = {
   ],
   authors: [
     {
-      name: "shadcn",
-      url: "https://shadcn.com",
+      name: "wcw",
+      url: "",
     },
   ],
-  creator: "shadcn",
+  creator: "wcw",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: "@shadcn",
+    creator: "wcw",
   },
   icons: {
     icon: "/favicon.ico",
