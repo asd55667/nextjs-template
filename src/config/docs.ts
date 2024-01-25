@@ -1,8 +1,8 @@
-import { MainNavItem, SidebarNavItem } from "@/types/nav"
+import { MainNavItem, SidebarNavItem } from "@/types/nav";
 
 interface DocsConfig {
-  mainNav: MainNavItem[]
-  sidebarNav: SidebarNavItem[]
+  mainNav: MainNavItem[];
+  sidebarNav: SidebarNavItem[];
 }
 
 export const docsConfig: DocsConfig = {
@@ -12,5 +12,35 @@ export const docsConfig: DocsConfig = {
       href: "/docs",
     },
   ],
-  sidebarNav: []
-}
+  sidebarNav: [
+    {
+      title: "Getting Started",
+      items: [
+        {
+          title: "Introduction",
+          description: "Introduction",
+          href: "/docs",
+          items: [],
+        },
+        {
+          title: "Theming",
+          description: "Theming",
+          href: "/docs/theming",
+          items: [],
+        },
+        {
+          title: "Dark mode",
+          description: "Dark mode",
+          href: "/docs/dark-mode",
+          items: [],
+        },
+        {
+          title: "Changelog",
+          description: "Changelog",
+          href: "/docs/changelog",
+          items: [],
+        },
+      ],
+    },
+  ],
+};
