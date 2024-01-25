@@ -6,7 +6,7 @@ import { CommandMenu } from "@/components/CommandMenu";
 import { Icons } from "@/components/Icons";
 import { MainNav } from "@/components/MainNav";
 import { MobileNav } from "@/components/MobileNav";
-import { buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/ui/button";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 
 export function SiteHeader() {

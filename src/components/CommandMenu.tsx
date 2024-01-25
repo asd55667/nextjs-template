@@ -14,7 +14,7 @@ import { useTheme } from "next-themes";
 
 import { docsConfig } from "@/config/docs";
 import { cn } from "@/utils";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/ui/button";
 import {
   CommandDialog,
   CommandEmpty,
@@ -23,7 +23,7 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@/components/ui/command";
+} from "@/ui/command";
 
 export function CommandMenu({ ...props }: DialogProps) {
   const router = useRouter();
