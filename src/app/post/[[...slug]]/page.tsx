@@ -1,5 +1,3 @@
-"use client";
-
 import type { IPost } from "@/types/post";
 import { siteConfig } from "@/config/site";
 import { Post } from "@/components/Post";

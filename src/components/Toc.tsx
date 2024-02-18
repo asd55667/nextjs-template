@@ -11,17 +11,15 @@ interface TocProps {
 }
 
 export function DashboardTableOfContents({ toc }: TocProps) {
-  const itemIds = React.useMemo(
-    () =>
-      toc.items
-        ? toc.items
-            .flatMap((item) => [item.url, item?.items?.map((item) => item.url)])
-            .flat()
-            .filter(Boolean)
-            .map((id) => id?.split("#")[1])
-        : [],
-    [toc]
-  );
+  const itemIds = toc.items
+    ? (
+        toc.items
+          .flatMap((item) => [item.url, item?.items?.map((item) => item.url)])
+          .flat()
+          .filter(Boolean) as string[]
+      ).map((id) => id?.split("#")[1])
+    : [];
+
   const activeHeading = useActiveItem(itemIds);
   const mounted = useMounted();
 
@@ -38,7 +36,7 @@ export function DashboardTableOfContents({ toc }: TocProps) {
 }
 
 function useActiveItem(itemIds?: string[]) {
-  const [activeId, setActiveId] = React.useState<null | string>(null);
+  const [activeId, setActiveId] = React.useState<undefined | string>(undefined);
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
@@ -73,7 +71,7 @@ function useActiveItem(itemIds?: string[]) {
 }
 
 interface TreeProps {
-  tree: { items: Item[] };
+  tree: { items: Item[] } | Item;
   level?: number;
   activeItem?: string;
 }
