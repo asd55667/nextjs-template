@@ -79,12 +79,12 @@ export function Post({ post }: { post: IPost }) {
         {post.description}
       </Balance>
 
-      <div className="flex gap-2">
+      {/* <div className="flex gap-2">
         Posted by
         <span>{post.author}</span>
         on
         <span>{format(post.date, "MMMM dd, yyyy")}</span>
-      </div>
+      </div> */}
 
       <Markdown className="pb-6 pt-4">{post.content}</Markdown>
 

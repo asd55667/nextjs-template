@@ -11,7 +11,7 @@ import {
 } from "@/components/PageAside";
 
 const post: IPost = {
-  id: 0,
+  id: "0",
   title: "Post Title",
   description: "description for post",
   date: Date.now(),
@@ -35,11 +35,10 @@ export default function Home() {
   const posts: IPost[] = Array.from({ length: 3 }, (_, id) => ({
     ...post,
     title: post.title + " " + id,
-    id,
   }));
 
   return (
-    <div className="flex min-h-screen p-24 lg:gap-16 gap-10">
+    <div className="container relative flex min-h-screen p-8 lg:gap-16 gap-10">
       <div className="flex flex-col flex-grow gap-2">
         {posts.map((post, idx) => (
           <PostPreview key={idx} post={post} />

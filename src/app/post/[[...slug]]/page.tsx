@@ -12,7 +12,7 @@ interface PostPageProps {
 
 async function getPost({ params }: PostPageProps): Promise<IPost> {
   const id = params.slug?.join("/") || "";
-  const res = await fetch(`${siteConfig.host}/content/post/${id}`);
+  const res = await fetch(`${siteConfig.host}/api/content/post/${id}`);
 
   return res.json();
 }
@@ -21,7 +21,7 @@ export default async function PostPage({ params }: PostPageProps) {
   const post = await getPost({ params });
 
   return (
-    <div className="flex items-center justify-between p-24">
+    <div className="flex justify-between p-24 md:px-[20%]">
       <Post post={post} />
 
       {post.toc && (
