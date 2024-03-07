@@ -27,7 +27,8 @@ export function PostPreview({ post }: { post: IPost }) {
 
       <p className="text-lg text-muted-foreground mt-1">{post.description}</p>
 
-      <Markdown className="pb-6 pt-4">{post.content}</Markdown>
+      {/* <Markdown className="pb-6 pt-4">{post.content}</Markdown> */}
+      <div className="overflow-auto" dangerouslySetInnerHTML={{ __html: post.content }}></div>
 
       <Link
         href={`/post/${post.id}`}
@@ -79,14 +80,8 @@ export function Post({ post }: { post: IPost }) {
         {post.description}
       </Balance>
 
-      {/* <div className="flex gap-2">
-        Posted by
-        <span>{post.author}</span>
-        on
-        <span>{format(post.date, "MMMM dd, yyyy")}</span>
-      </div> */}
-
-      <Markdown className="pb-6 pt-4">{post.content}</Markdown>
+      {/* <Markdown className="pb-6 pt-4">{post.content}</Markdown> */}
+      <div className="overflow-auto" dangerouslySetInnerHTML={{ __html: post.content }}></div>
 
       <div className="flex gap-2 justify-end">
         Updated by

@@ -1,24 +1,20 @@
-import type { IPost } from "@/types/post";
-import { siteConfig } from "@/config/site";
+"use client";
+
 import { Post } from "@/components/Post";
 import { DashboardTableOfContents } from "@/components/Toc";
 import { ScrollArea } from "@/ui/scroll-area";
-
+import { getPost } from "@/api/post";
 interface PostPageProps {
   params: {
     slug: string[];
   };
 }
 
-async function getPost({ params }: PostPageProps): Promise<IPost> {
+export default function PostPage({ params }: PostPageProps) {
   const id = params.slug?.join("/") || "";
-  const res = await fetch(`${siteConfig.host}/api/content/post/${id}`);
+  const { post } = getPost(id);
 
-  return res.json();
-}
-
-export default async function PostPage({ params }: PostPageProps) {
-  const post = await getPost({ params });
+  if (!post) return <div>Loading</div>;
 
   return (
     <div className="flex justify-between p-24 md:px-[20%]">
