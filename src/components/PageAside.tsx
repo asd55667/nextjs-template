@@ -1,16 +1,10 @@
 import React from "react";
 import Link from "next/link";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/ui/card";
 
-import type { IPost } from "@/types/post";
+import type { ICategory } from "@/types/category";
+import { cn } from "@/utils";
 import pkg from "@/../package.json";
 
 export interface IAsideBlock {
@@ -20,39 +14,12 @@ export interface IAsideBlock {
 
 export function AsideBlock({ title, children }: IAsideBlock) {
   return (
-    <Card className="lg:w-[350px]">
+    <Card className="min-w-60">
       <CardHeader>
         <CardTitle>{title}</CardTitle>
         <CardContent>{children}</CardContent>
       </CardHeader>
     </Card>
-  );
-}
-
-export function RecentPosts({ posts }: { posts: IPost[] }) {
-  return (
-    <>
-      {posts.map((post, idx) => (
-        <RecentPost post={post} key={idx}></RecentPost>
-      ))}
-    </>
-  );
-}
-
-function RecentPost({ post }: { post: IPost }) {
-  return (
-    <Link
-      href={`/post/${post.id}`}
-      target="_self"
-      rel="noreferrer"
-      className="flex gap-4 hover:text-accent-foreground"
-    >
-      <div className="date">
-        {new Date(post.date).getMonth() + 1} {new Date(post.date).getDate()},{" "}
-        {new Date(post.date).getFullYear()}
-      </div>
-      <h4>{post.title}</h4>
-    </Link>
   );
 }
 
@@ -64,8 +31,49 @@ export function AboutMe() {
     </p>
   );
 }
-export function Category() {
-  return <>Category</>;
+
+interface ICategoryProps {
+  categories: ICategory[];
+  level?: number;
+  activeItem?: string;
+}
+
+export function Category({
+  categories,
+  level = 1,
+  activeItem,
+}: ICategoryProps) {
+  return (
+    <ul className={cn("m-0 list-none", { "pl-4": level !== 1 })}>
+      {categories.map((category, index) => (
+        <li key={index} className={cn("mt-0 pt-2")}>
+          <div className="flex items-center gap-2">
+            <Link
+              href={`/category/${category.key}/1`}
+              className={cn(
+                "inline-block no-underline transition-colors hover:text-foreground",
+                category.key === `#${activeItem}`
+                  ? "font-medium text-foreground"
+                  : "text-muted-foreground"
+              )}
+            >
+              {category.title}
+            </Link>
+
+            <div>{category.total}</div>
+          </div>
+
+          {category.children.length ? (
+            <Category
+              categories={category.children}
+              level={level + 1}
+              activeItem={activeItem}
+            />
+          ) : null}
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 export function Archives() {

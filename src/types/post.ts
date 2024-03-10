@@ -1,7 +1,7 @@
 export interface Item {
     title: string;
     url: string;
-    items?: Item[];
+    items: Item[];
 }
 
 export interface IPost {
