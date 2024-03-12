@@ -36,11 +36,13 @@ interface ICategoryProps {
   categories: ICategory[];
   level?: number;
   activeItem?: string;
+  scope?: string;
 }
 
 export function Category({
   categories,
   level = 1,
+  scope = "/category",
   activeItem,
 }: ICategoryProps) {
   return (
@@ -49,7 +51,7 @@ export function Category({
         <li key={index} className={cn("mt-0 pt-2")}>
           <div className="flex items-center gap-2">
             <Link
-              href={`/category/${category.key}/1`}
+              href={`${scope}/${category.key}/1`}
               className={cn(
                 "inline-block no-underline transition-colors hover:text-foreground",
                 category.key === `#${activeItem}`
@@ -67,6 +69,7 @@ export function Category({
             <Category
               categories={category.children}
               level={level + 1}
+              scope={`${scope}/${category.key}`}
               activeItem={activeItem}
             />
           ) : null}
