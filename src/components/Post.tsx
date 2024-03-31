@@ -45,7 +45,7 @@ export function PostPreview({ post }: { post: IPost }) {
         Posted by
         <span>{post.author}</span>
         on
-        <span>{format(post.date, "MMMM dd, yyyy")}</span>
+        <span>{format(post.created, "MMMM dd, yyyy")}</span>
       </div>
     </div>
   );
