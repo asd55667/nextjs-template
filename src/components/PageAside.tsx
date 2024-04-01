@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/ui/card";
 import type { ICategory } from "@/types/category";
 import { cn } from "@/utils";
 import pkg from "@/../package.json";
+import { getArchiveList } from "@/api/archive";
 
 export interface IAsideBlock {
   title: string;
@@ -35,7 +36,6 @@ export function AboutMe() {
 interface ICategoryProps {
   categories: ICategory[];
   level?: number;
-  activeItem?: string;
   scope?: string;
 }
 
@@ -43,7 +43,6 @@ export function Category({
   categories,
   level = 1,
   scope = "/category",
-  activeItem,
 }: ICategoryProps) {
   return (
     <ul className={cn("m-0 list-none", { "pl-4": level !== 1 })}>
@@ -54,15 +53,13 @@ export function Category({
               href={`${scope}/${category.key}/1`}
               className={cn(
                 "inline-block no-underline transition-colors hover:text-foreground",
-                category.key === `#${activeItem}`
-                  ? "font-medium text-foreground"
-                  : "text-muted-foreground"
+                "text-muted-foreground"
               )}
             >
               {category.title}
             </Link>
 
-            <div>{category.total}</div>
+            <div>({category.total})</div>
           </div>
 
           {category.children.length ? (
@@ -70,7 +67,6 @@ export function Category({
               categories={category.children}
               level={level + 1}
               scope={`${scope}/${category.key}`}
-              activeItem={activeItem}
             />
           ) : null}
         </li>
@@ -80,5 +76,36 @@ export function Category({
 }
 
 export function Archives() {
-  return <>Archives</>;
+  const { list, isLoading } = getArchiveList();
+
+  if (isLoading) return <div>Loading</div>;
+  if (!list?.length) return <div>Loading</div>;
+
+  return (
+    <ul className="m-0 list-none">
+      {list.map((archive, index) => (
+        <li key={index} className={cn("mt-0 pt-2")}>
+          <ul className="m-0 list-none pl-4">
+            {archive.months.map((month, idx) => (
+              <li key={idx} className={cn("mt-0 pt-2")}>
+                <div className="flex items-center gap-2">
+                  <Link
+                    href={`/archive/${archive.year}/${month.month + 1}/1`}
+                    className={cn(
+                      "inline-block no-underline transition-colors hover:text-foreground",
+                      "text-muted-foreground"
+                    )}
+                  >
+                    {archive.year} /{" "}
+                    {month.month < 9 ? "0" + (month.month + 1) : month.month}
+                  </Link>
+                  <div>({month.posts.length})</div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ul>
+  );
 }

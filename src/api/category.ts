@@ -2,7 +2,7 @@ import useSWR from "swr";
 
 import { fetcher } from "./fetcher";
 import type { ICategory } from "@/types/category";
-import { IPost } from "@/types/post";
+import type { IPost } from "@/types/post";
 
 export function getCategoryList() {
     const { data, error, isLoading } = useSWR<ICategory>('/api/category/list', fetcher)

@@ -3,7 +3,7 @@
 import { format } from "date-fns";
 import Link from "next/link";
 
-import { getPostInCategory } from "@/api/category";
+import { getArchive } from "@/api/archive";
 import { PaginationFooter } from "@/components/PaginationFooter";
 
 interface CategoryPageProps {
@@ -16,7 +16,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
   const category = params.slug.slice(0, -1);
   const page = params.slug[params.slug.length - 1];
 
-  const { posts, pages } = getPostInCategory(category.join("/"), page);
+  const { posts, pages } = getArchive(category.join("/"), page);
 
   if (!posts?.length) return <div>Loading</div>;
 
@@ -25,7 +25,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       <div className="flex flex-col gap-4">
         {posts.map((post) => (
           <div key={post.id} className="flex gap-4">
-            <p>{format(post.updated, "yyyy-MM-dd")}</p>
+            <p>{format(post.created, "yyyy-MM-dd")}</p>
 
             <Link
               href={`/post/${post.id}`}

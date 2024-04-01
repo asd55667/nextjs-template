@@ -32,3 +32,12 @@ export interface IPost {
      */
     toc?: { items: Item[] }
 }
+
+export interface IPostPreview {
+    id: string;
+    title: string;
+    created: number;
+    content: string;
+    author: string;
+    tags: string[];
+}
