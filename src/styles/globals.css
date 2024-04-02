@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "./markdown.css";
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -33,6 +35,8 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
+
+    --code: 9 9 11;
   }
 
   .dark {
@@ -63,6 +67,8 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+
+    --code: 24 24 27;
   }
 }
 
@@ -83,5 +89,6 @@
 .markdown-body {
   h1,h2,h3,h4,h5,h6 {
       @apply scroll-m-20;
+      font-weight: 600;
   }
 }
