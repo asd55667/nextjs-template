@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/ui/card";
+import { Skeleton } from "@/ui/skeleton";
 
 import type { ICategory } from "@/types/category";
 import { cn } from "@/utils";
@@ -15,11 +16,12 @@ export interface IAsideBlock {
 
 export function AsideBlock({ title, children }: IAsideBlock) {
   return (
-    <Card className="min-w-60">
-      <CardHeader>
+    <Card className="relative min-w-60">
+      <CardHeader className="p-2">
         <CardTitle>{title}</CardTitle>
-        <CardContent>{children}</CardContent>
       </CardHeader>
+
+      <CardContent className="">{children}</CardContent>
     </Card>
   );
 }
@@ -78,14 +80,17 @@ export function Category({
 export function Archives() {
   const { list, isLoading } = getArchiveList();
 
-  if (isLoading) return <div>Loading</div>;
-  if (!list?.length) return <div>Loading</div>;
+  if (isLoading) {
+    return <SkeletonGroup length={5} />;
+  }
+
+  if (!list?.length) return <div>Not Content</div>;
 
   return (
     <ul className="m-0 list-none">
       {list.map((archive, index) => (
         <li key={index} className={cn("mt-0 pt-2")}>
-          <ul className="m-0 list-none pl-4">
+          <ul className="m-0 list-none">
             {archive.months.map((month, idx) => (
               <li key={idx} className={cn("mt-0 pt-2")}>
                 <div className="flex items-center gap-2">
@@ -107,5 +112,15 @@ export function Archives() {
         </li>
       ))}
     </ul>
+  );
+}
+
+export function SkeletonGroup({ length }: { length: number }) {
+  return (
+    <div className="flex flex-col gap-2 w-48">
+      {Array.from({ length }).map((_, index) => (
+        <Skeleton className="h-6 w-full" key={index} />
+      ))}
+    </div>
   );
 }
