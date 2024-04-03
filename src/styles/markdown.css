@@ -2,7 +2,6 @@
     h1 {
         padding-bottom: .3em;
         margin-top: 0;
-        font-size: .3em;
         font-size: 2em;
         border-bottom:  1px solid hsl(var(--muted-foreground));
     }
@@ -10,21 +9,15 @@
     h2 {
         padding-bottom: .3em;
         font-size: 1.5em;
-        margin-top: 24px;
-        margin-bottom: 16px;
         border-bottom:  1px solid hsl(var(--muted-foreground));
     }
 
     h3 {
         font-size: 1.25em;
-        margin-top: 24px;
-        margin-bottom: 16px;
         line-height: 1.25;
     }
 
     h4  {
-        margin-top: 24px;
-        margin-bottom: 16px;
         line-height: 1.25;
         font-size: 1em;
     }
@@ -121,5 +114,9 @@
         max-width: 100%;
         border-style: none;
         height: revert-layer;
+    }
+
+    div[data-rehype-pretty-code-fragment] {
+        margin-bottom: 16px;
     }
 }

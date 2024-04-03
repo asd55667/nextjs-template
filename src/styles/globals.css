@@ -90,5 +90,7 @@
   h1,h2,h3,h4,h5,h6 {
       @apply scroll-m-20;
       font-weight: 600;
+      margin-top: 24px;
+      margin-bottom: 16px;
   }
 }
