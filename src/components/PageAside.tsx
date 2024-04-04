@@ -1,3 +1,4 @@
+import useSWR from "swr";
 import React from "react";
 import Link from "next/link";
 
@@ -5,9 +6,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/ui/card";
 import { Skeleton } from "@/ui/skeleton";
 
 import type { ICategory } from "@/types/category";
+import type { IArchive } from "@/types/archive";
 import { cn } from "@/utils";
 import pkg from "@/../package.json";
-import { getArchiveList } from "@/api/archive";
+import { fetcher } from "@/utils/fetcher";
 
 export interface IAsideBlock {
   title: string;
@@ -78,7 +80,10 @@ export function Category({
 }
 
 export function Archives() {
-  const { list, isLoading } = getArchiveList();
+  const { data: list, isLoading } = useSWR<IArchive[]>(
+    "/api/archive/list",
+    fetcher
+  );
 
   if (isLoading) {
     return <SkeletonGroup length={5} />;

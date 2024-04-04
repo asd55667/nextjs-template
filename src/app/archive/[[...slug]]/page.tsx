@@ -1,10 +1,12 @@
 "use client";
 
-import { format } from "date-fns";
+import useSWR from "swr";
 import Link from "next/link";
+import { format } from "date-fns";
 
-import { getArchive } from "@/api/archive";
 import { PaginationFooter } from "@/components/PaginationFooter";
+import { IPostPreview } from "@/types/post";
+import { fetcher } from "@/utils/fetcher";
 
 interface CategoryPageProps {
   params: {
@@ -12,13 +14,19 @@ interface CategoryPageProps {
   };
 }
 
-export default function CategoryPage({ params }: CategoryPageProps) {
-  const category = params.slug.slice(0, -1);
+export default function ArchivePage({ params }: CategoryPageProps) {
+  const date = params.slug.slice(0, -1);
   const page = params.slug[params.slug.length - 1];
 
-  const { posts, pages } = getArchive(category.join("/"), page);
+  const { data, isLoading } = useSWR<{ posts: IPostPreview[]; pages: number }>(
+    `/api/archive/${date.join("/")}/${page}`,
+    fetcher
+  );
 
-  if (!posts?.length) return <div>Loading</div>;
+  if (isLoading) return <div>Loading</div>;
+  if (!data) return <div>Error</div>;
+
+  const { posts, pages } = data;
 
   return (
     <div className="center flex-col gap-4 p-12">

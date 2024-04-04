@@ -1,10 +1,12 @@
 "use client";
 
-import { format } from "date-fns";
+import useSWR from "swr";
 import Link from "next/link";
+import { format } from "date-fns";
 
-import { getPostInCategory } from "@/api/category";
 import { PaginationFooter } from "@/components/PaginationFooter";
+import { fetcher } from "@/utils/fetcher";
+import { IPost } from "@/types/post";
 
 interface CategoryPageProps {
   params: {
@@ -16,9 +18,15 @@ export default function CategoryPage({ params }: CategoryPageProps) {
   const category = params.slug.slice(0, -1);
   const page = params.slug[params.slug.length - 1];
 
-  const { posts, pages } = getPostInCategory(category.join("/"), page);
+  const { data, isLoading } = useSWR<{ posts: IPost[]; pages: number }>(
+    `/api/category/${category.join("/")}/${page}`,
+    fetcher
+  );
 
-  if (!posts?.length) return <div>Loading</div>;
+  if (isLoading) return <div>Loading</div>;
+  if (!data) return <div>Not Found</div>;
+
+  const { posts, pages } = data;
 
   return (
     <div className="center flex-col gap-4 p-12">

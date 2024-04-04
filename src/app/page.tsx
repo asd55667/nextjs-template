@@ -1,5 +1,6 @@
 "use client";
 
+import useSWR from "swr";
 import { LoaderIcon } from "lucide-react";
 
 import { PostPreview } from "@/components/Post";
@@ -10,11 +11,15 @@ import {
   Archives,
   SkeletonGroup,
 } from "@/components/PageAside";
-import { getRecentPost } from "@/api/post";
-import { getCategoryList } from "@/api/category";
+import type { IPost } from "@/types/post";
+import { fetcher } from "@/utils/fetcher";
+import type { ICategory } from "@/types/category";
 
 export default function Home() {
-  const { categories, isLoading } = getCategoryList();
+  const { data: categories, isLoading } = useSWR<ICategory>(
+    "/api/category/list",
+    fetcher
+  );
 
   return (
     <div className="container relative flex min-h-screen py-12 px-36 lg:gap-16 gap-10">
@@ -44,7 +49,10 @@ export default function Home() {
 }
 
 function Preview() {
-  const { posts, isLoading } = getRecentPost();
+  const { data: posts, isLoading } = useSWR<IPost[]>(
+    "/api/content/recent-posts",
+    fetcher
+  );
 
   let content: React.ReactNode;
   if (isLoading) {

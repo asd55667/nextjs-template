@@ -1,11 +1,15 @@
 "use client";
 
+import useSWR from "swr";
 import { LoaderIcon } from "lucide-react";
 
 import { Post } from "@/components/Post";
 import { DashboardTableOfContents } from "@/components/Toc";
 import { ScrollArea } from "@/ui/scroll-area";
-import { getPost } from "@/api/post";
+import NotFound from "@/app/not-found";
+import { fetcher } from "@/utils/fetcher";
+import type { IPost } from "@/types/post";
+
 interface PostPageProps {
   params: {
     slug: string[];
@@ -14,7 +18,10 @@ interface PostPageProps {
 
 export default function PostPage({ params }: PostPageProps) {
   const id = params.slug?.join("/") || "";
-  const { post, isLoading } = getPost(id);
+  const { data: post, isLoading } = useSWR<IPost>(
+    `/api/content/post/${id}`,
+    fetcher
+  );
 
   if (isLoading) {
     return (
@@ -24,7 +31,7 @@ export default function PostPage({ params }: PostPageProps) {
     );
   }
 
-  if (!post) return <div>Loading</div>;
+  if (!post) return <NotFound />;
 
   return (
     <div className="flex justify-between p-24 md:px-56">
