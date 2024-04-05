@@ -3,7 +3,7 @@
 import useSWR from "swr";
 import { LoaderIcon } from "lucide-react";
 
-import { PostPreview } from "@/components/Post";
+import { PostPreview } from "@/components/PostPreview";
 import {
   AsideBlock,
   AboutMe,
