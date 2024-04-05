@@ -57,6 +57,16 @@ export async function generateMetadata({
   };
 }
 
+export const dynamic = "error";
+export function generateStaticParams() {
+  return [
+    { slug: [""] },
+    { slug: ["theming"] },
+    { slug: ["dark-mode"] },
+    { slug: ["changelog"] },
+  ];
+}
+
 export default function DocPage({ params }: DocPageProps) {
   const doc = getDocFromParams({ params });
 

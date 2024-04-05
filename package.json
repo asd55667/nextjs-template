@@ -7,8 +7,11 @@
     "url": "https://twitter.com/wcw82645854"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev:next": "next dev",
+    "dev:spa": "vite",
+    "build": "next build && vite build",
+    "build:next": "next build",
+    "build:spa": "vite build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -30,6 +33,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-markdown": "^9.0.1",
+    "react-router-dom": "^6.22.3",
     "react-wrap-balancer": "^1.1.0",
     "swr": "^2.2.5",
     "tailwind-merge": "^2.2.0",
@@ -41,12 +45,14 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vite": "^5.2.8"
   },
   "volta": {
     "node": "18.19.0"
