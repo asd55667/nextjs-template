@@ -1,47 +1,31 @@
-import React, { Suspense, lazy, useEffect } from "react";
+import React, { Suspense, lazy } from "react";
 import { createRoot } from "react-dom/client";
-import Count from "./Count";
-import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "@/styles/globals.css";
 
-const ArchivePage = lazy(() => import("@/components/Archive"));
+const ArchivePage = lazy(() => import("@/pages/Archive"));
+const CategoryPage = lazy(() => import("@/pages/Category"));
+const PostPage = lazy(() => import("@/pages/Post"));
 
 function App() {
-  const { pathname } = location;
-  const params = { slug: pathname.split("/").slice(2) };
-
-  console.log(pathname, params);
-
   return (
     <React.StrictMode>
       <BrowserRouter>
         <Suspense fallback={<div>loading</div>}>
           <Routes>
-            <Route index element={<Count />} />
-            {/* <Route
+            <Route
               path="/archive/:year/:month/:page"
-              element={<ArchivePage params={params} />}
-            /> */}
-            {/* <Route path="/*" element={<Navigate to="/" />} /> */}
+              element={<ArchivePage />}
+            />
+            <Route
+              path="/category/:category/:page"
+              element={<CategoryPage />}
+            />
+            <Route path="/post/:id" element={<PostPage />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
     </React.StrictMode>
-  );
-}
-
-function Link({
-  href,
-  className,
-  children,
-}: {
-  href: string;
-  className: string;
-  children: string;
-}) {
-  return (
-    <NavLink to={href} className={className}>
-      {children}
-    </NavLink>
   );
 }
 

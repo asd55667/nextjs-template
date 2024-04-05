@@ -7,23 +7,11 @@ import { format } from "date-fns";
 import { PaginationFooter } from "@/components/PaginationFooter";
 import { IPostPreview } from "@/types/post";
 import { fetcher } from "@/utils/fetcher";
+import type { PageProps } from "@/types";
 
-interface CategoryPageProps {
-  params: {
-    slug: string[];
-  };
-  link: (
-    href: string,
-    className: string,
-    children: string
-  ) => React.JSX.Element;
-}
-
-export default function ArchivePage({ params, link }: CategoryPageProps) {
-  console.log(params);
-
+export default function ArchivePage({ params, link }: PageProps) {
   const date = params.slug.slice(0, -1);
-  const page = params.slug[params.slug.length - 1];
+  const page = params.slug[params.slug.length - 1] || 1;
 
   const { data, isLoading } = useSWR<{ posts: IPostPreview[]; pages: number }>(
     `/api/archive/${date.join("/")}/${page}`,
@@ -42,17 +30,7 @@ export default function ArchivePage({ params, link }: CategoryPageProps) {
           <div key={post.id} className="flex gap-4">
             <p>{format(post.created, "yyyy-MM-dd")}</p>
 
-            {link(
-              `/post/${post.id}`,
-              "inline-block no-underline transition-colors hover:text-foreground text-muted-foreground",
-              post.title
-            )}
-            {/* <Link
-              href={`/post/${post.id}`}
-              className="inline-block no-underline transition-colors hover:text-foreground text-muted-foreground"
-            >
-              {post.title}
-            </Link> */}
+            {link(`/post/${post.id}`, post.title)}
           </div>
         ))}
       </div>
