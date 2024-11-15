@@ -52,7 +52,7 @@ export async function generateMetadata({
       title: doc.title,
       description: doc.description,
       images: [siteConfig.ogImage],
-      creator: "@shadcn",
+      creator: "wcw",
     },
   };
 }
@@ -62,7 +62,7 @@ export default function DocPage({ params }: DocPageProps) {
 
   return (
     <div className="flex flex-col items-center justify-between p-24">
-      Hello Doc {doc?.title}!
+      Hello {doc?.title}!
     </div>
   );
 }

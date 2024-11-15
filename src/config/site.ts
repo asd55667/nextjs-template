@@ -1,12 +1,12 @@
 export const siteConfig = {
-  name: "shadcn/ui",
-  url: "https://ui.shadcn.com",
-  ogImage: "https://ui.shadcn.com/android-chrome-512x512.png",
+  name: "wcw's site",
+  url: "https://wuchengwei.com",
+  ogImage: "https://github.com/asd55667",
   description:
-    "Beautifully designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source.",
+    "personal site of wcw",
   links: {
-    twitter: "https://twitter.com/shadcn",
-    github: "https://github.com/shadcn-ui/ui",
+    twitter: "https://twitter.com/wcw82645854",
+    github: "https://github.com/asd55667",
   },
 };
 

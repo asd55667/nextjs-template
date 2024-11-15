@@ -9,35 +9,23 @@ export const docsConfig: DocsConfig = {
   mainNav: [
     {
       title: "Documentation",
-      href: "/docs",
+      href: "/projects",
     },
   ],
   sidebarNav: [
     {
-      title: "Getting Started",
+      title: "The things I built",
       items: [
         {
-          title: "Introduction",
-          description: "Introduction",
-          href: "/docs",
+          title: "CV",
+          description: "my resume",
+          href: "/project/cv",
           items: [],
         },
         {
-          title: "Theming",
+          title: "Recorder",
           description: "Theming",
-          href: "/docs/theming",
-          items: [],
-        },
-        {
-          title: "Dark mode",
-          description: "Dark mode",
-          href: "/docs/dark-mode",
-          items: [],
-        },
-        {
-          title: "Changelog",
-          description: "Changelog",
-          href: "/docs/changelog",
+          href: "/project/recorder",
           items: [],
         },
       ],

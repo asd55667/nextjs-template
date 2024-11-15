@@ -11,7 +11,6 @@ export function MainNav() {
   return (
     <div className="mr-4 hidden md:flex">
       <Link href="/" className="mr-6 flex items-center space-x-2">
-        {/* <Icons.logo className="h-6 w-6" /> */}
         <span className="hidden font-bold sm:inline-block">
           {siteConfig.name}
         </span>
@@ -19,13 +18,13 @@ export function MainNav() {
 
       <nav className="flex items-center gap-6 text-sm">
         <Link
-          href="/docs"
+          href="/project"
           className={cn(
             "transition-colors hover:text-foreground/80",
-            pathname === "/docs" ? "text-foreground" : "text-foreground/60"
+            pathname === "/project" ? "text-foreground" : "text-foreground/60"
           )}
         >
-          Menu
+          Projects
         </Link>
         {/* ... */}
       </nav>
