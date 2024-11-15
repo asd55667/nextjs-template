@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { useTheme } from "next-themes";
+import { MoonIcon, SunIcon } from "lucide-react"
 
 import { Switch } from "@/ui/switch";
 
@@ -20,7 +21,12 @@ export function ThemeSwitcher() {
         onCheckedChange={() => {
           setTheme(newThemeMatchesSystem ? "system" : newTheme);
         }}
-      />
+      >
+        <div className="inline-flex center">
+          <SunIcon className="h-4 w-4 hidden [html.light_&]:block" />
+          <MoonIcon className="h-4 w-4 hidden [html.dark_&]:block" />
+        </div>
+      </Switch>
     </div>
   );
 }
