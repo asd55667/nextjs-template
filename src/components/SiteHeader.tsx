@@ -22,7 +22,7 @@ export function SiteHeader() {
 
           <nav className="flex items-center">
             <Link
-              href={siteConfig.links.github}
+              href={siteConfig.links.github.pathname}
               target="_blank"
               rel="noreferrer"
             >
@@ -39,7 +39,7 @@ export function SiteHeader() {
               </div>
             </Link>
             <Link
-              href={siteConfig.links.twitter}
+              href={siteConfig.links.twitter.pathname}
               target="_blank"
               rel="noreferrer"
             >

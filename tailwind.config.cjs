@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import animate from 'tailwindcss-animate';
+import containerQueries from '@tailwindcss/container-queries';
 
 module.exports = {
   darkMode: ["class"],
@@ -8,6 +9,7 @@ module.exports = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
+    './node_modules/@radix-ui/**/*.{js,jsx,ts,tsx}',
   ],
   prefix: "",
   theme: {
@@ -17,6 +19,8 @@ module.exports = {
       screens: {
         "2xl": "1400px",
       },
+      containerName: 'container',
+      containerQuery: true,
     },
     extend: {
       colors: {
@@ -75,5 +79,23 @@ module.exports = {
       },
     },
   },
-  plugins: [animate],
+  plugins: [
+    animate,
+    containerQueries,
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/forms')({
+      strategy: 'class',
+    }),
+  ],
+  future: {
+    hoverOnlyWhenSupported: true,
+    respectDefaultRingColorOpacity: true,
+    disableColorOpacityUtilitiesByDefault: true,
+  },
+  experimental: {
+    // optimizeUniversalDefaults: true,
+    matchVariant: true,
+    extendedSpacingScale: true,
+    extendedFontSizeScale: true
+  }
 }
