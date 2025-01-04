@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
 import { docsConfig } from "@/config/docs";
 import { siteConfig } from "@/config/site";
 import { absoluteUrl } from "@/utils";
-import { notFound } from "next/navigation"
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 interface DocPageProps {
   params: {
@@ -62,13 +62,12 @@ export default async function DocPage({ params }: DocPageProps) {
   const doc = await getDocFromParams({ params });
 
   if (!doc) {
-    notFound()
+    notFound();
   }
 
   return (
     <div className="flex flex-col justify-between py-24 px-8">
       <h1>{doc?.title}</h1>
-
       Hello Doc {doc?.title}!
     </div>
   );

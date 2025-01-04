@@ -1,16 +1,16 @@
 "use client";
 
-import * as React from "react";
 import Link, { type LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
+import * as React from "react";
 
+import { Icons } from "@/components/Icons";
 import { docsConfig } from "@/config/docs";
 import { siteConfig } from "@/config/site";
-import { cn } from "@/utils";
-import { Icons } from "@/components/Icons";
 import { Button } from "@/ui/button";
 import { ScrollArea } from "@/ui/scroll-area";
 import { Sheet, SheetContent, SheetTrigger } from "@/ui/sheet";
+import { cn } from "@/utils";
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false);
@@ -80,8 +80,11 @@ export function MobileNav() {
             )}
           </div>
           <div className="flex flex-col space-y-2">
-              {docsConfig.sidebarNav.map((item) => (
-                <div key={item.href || item.title} className="flex flex-col space-y-3 pt-6">
+            {docsConfig.sidebarNav.map((item) => (
+              <div
+                key={item.href || item.title}
+                className="flex flex-col space-y-3 pt-6"
+              >
                 <h4 className="font-medium">{item.title}</h4>
                 {item?.items?.length &&
                   item.items.map((item) => (
