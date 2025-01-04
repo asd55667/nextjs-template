@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { SidebarNavItem } from "@/types/nav";
+import type { SidebarNavItem } from "@/types/nav";
 import { cn } from "@/utils";
 
 export interface DocsSidebarNavProps {
@@ -13,12 +13,14 @@ export interface DocsSidebarNavProps {
 export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
   const pathname = usePathname();
 
-  if (!items.length) return null;
+  if (!items.length) {
+    return null;
+  }
 
   return (
     <div className="w-full">
-      {items.map((nav, index) => (
-        <div key={index} className={cn("pb-4")}>
+      {items.map((nav) => (
+        <div key={nav.title} className={cn("pb-4")}>
           <h4 className="mb-1 rounded-md px-2 py-1 text-sm font-semibold">
             {nav.title}
           </h4>
@@ -38,15 +40,17 @@ export function DocsSidebarNavItems({
   items,
   pathname,
 }: DocsSidebarNavItemsProps) {
-  if (!items?.length) return null;
+  if (!items?.length) {
+    return null;
+  }
 
   return (
     <div className="grid grid-flow-row auto-rows-max text-sm">
-      {items.map((item, index) => (
+      {items.map((item) => (
         <DocsSidebarNavItem
           item={item}
           active={pathname === item.href}
-          key={index}
+          key={item.title}
         />
       ))}
     </div>
@@ -66,7 +70,7 @@ function DocsSidebarNavItem({ item, active }: DocsSidebarNavItemProps) {
         className={cn(
           "group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:underline",
           item.disabled && "cursor-not-allowed opacity-60",
-          active ? "font-medium text-foreground" : "text-muted-foreground"
+          active ? "font-medium text-foreground" : "text-muted-foreground",
         )}
         target={item.external ? "_blank" : ""}
         rel={item.external ? "noreferrer" : ""}
@@ -85,7 +89,7 @@ function DocsSidebarNavItem({ item, active }: DocsSidebarNavItemProps) {
     <span
       className={cn(
         "flex w-full cursor-not-allowed items-center rounded-md p-2 text-muted-foreground hover:underline",
-        item.disabled && "cursor-not-allowed opacity-60"
+        item.disabled && "cursor-not-allowed opacity-60",
       )}
     >
       {item.title}

@@ -1,5 +1,3 @@
-import type { UrlObject } from "url";
-
 export const siteConfig = {
   name: "shadcn/ui",
   url: "https://ui.shadcn.com",

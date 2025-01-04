@@ -30,7 +30,7 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
+    "noPropertyAccessFromIndexSignature": false,
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
     "allowImportingTsExtensions": true,

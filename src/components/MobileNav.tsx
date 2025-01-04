@@ -1,20 +1,16 @@
 "use client";
 
 import * as React from "react";
-import Link, { LinkProps } from "next/link";
+import Link, { type LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
 
 import { docsConfig } from "@/config/docs";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/utils";
-import { Icons } from "@/components/Icons"
+import { Icons } from "@/components/Icons";
 import { Button } from "@/ui/button";
 import { ScrollArea } from "@/ui/scroll-area";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "@/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/ui/sheet";
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false);
@@ -33,27 +29,28 @@ export function MobileNav() {
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"
           >
+            <title>Toggle Menu</title>
             <path
               d="M3 5H11"
               stroke="currentColor"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
-            ></path>
+            />
             <path
               d="M3 12H16"
               stroke="currentColor"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
-            ></path>
+            />
             <path
               d="M3 19H21"
               stroke="currentColor"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
-            ></path>
+            />
           </svg>
           <span className="sr-only">Toggle Menu</span>
         </Button>
@@ -79,12 +76,12 @@ export function MobileNav() {
                   >
                     {item.title}
                   </MobileLink>
-                )
+                ),
             )}
           </div>
           <div className="flex flex-col space-y-2">
-            {docsConfig.sidebarNav.map((item, index) => (
-              <div key={index} className="flex flex-col space-y-3 pt-6">
+              {docsConfig.sidebarNav.map((item) => (
+                <div key={item.href || item.title} className="flex flex-col space-y-3 pt-6">
                 <h4 className="font-medium">{item.title}</h4>
                 {item?.items?.length &&
                   item.items.map((item) => (
@@ -117,10 +114,11 @@ export function MobileNav() {
   );
 }
 
-interface MobileLinkProps extends LinkProps {
+interface MobileLinkProps extends LinkProps<unknown> {
   onOpenChange?: (open: boolean) => void;
   children: React.ReactNode;
   className?: string;
+  href: string;
 }
 
 function MobileLink({

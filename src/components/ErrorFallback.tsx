@@ -1,13 +1,16 @@
-import { Button } from './ui/button';
-import { AlertTriangle } from 'lucide-react';
-import Link from 'next/link';
+import { Button } from "./ui/button";
+import { AlertTriangle } from "lucide-react";
+import Link from "next/link";
 
 interface ErrorFallbackProps {
   error: Error;
   resetErrorBoundary: () => void;
 }
 
-export function ErrorFallback({ error, resetErrorBoundary }: ErrorFallbackProps) {
+export function ErrorFallback({
+  error,
+  resetErrorBoundary,
+}: ErrorFallbackProps) {
   return (
     <div className="flex h-screen w-full flex-col items-center justify-center gap-4">
       <div className="flex flex-col items-center gap-2">

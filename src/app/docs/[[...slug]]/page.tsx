@@ -37,7 +37,7 @@ export async function generateMetadata({
       title: doc.title,
       description: doc.description,
       type: "article",
-      url: absoluteUrl(doc.href!),
+      url: absoluteUrl(doc.href),
       images: [
         {
           url: siteConfig.ogImage,

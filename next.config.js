@@ -2,49 +2,47 @@
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
-    // serverActions: true,
     typedRoutes: true,
-    optimizePackageImports: ['@radix-ui/react-icons'],
-    // instrumentationHook: true
+    optimizePackageImports: ["@radix-ui/react-icons"],
   },
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: '**',
+        protocol: "https",
+        hostname: "**",
       },
     ],
   },
   headers: async () => {
     return [
       {
-        source: '/(.*)',
+        source: "/(.*)",
         headers: [
           {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff'
+            key: "X-Content-Type-Options",
+            value: "nosniff",
           },
           {
-            key: 'X-Frame-Options',
-            value: 'SAMEORIGIN'
+            key: "X-Frame-Options",
+            value: "SAMEORIGIN",
           },
           {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block'
+            key: "X-XSS-Protection",
+            value: "1; mode=block",
           },
           {
-            key: 'Strict-Transport-Security',
-            value: 'max-age=63072000; includeSubDomains; preload'
-          }
-        ]
-      }
-    ]
+            key: "Strict-Transport-Security",
+            value: "max-age=63072000; includeSubDomains; preload",
+          },
+        ],
+      },
+    ];
   },
   logging: {
     fetches: {
-      fullUrl: true
-    }
-  }
-}
+      fullUrl: true,
+    },
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
