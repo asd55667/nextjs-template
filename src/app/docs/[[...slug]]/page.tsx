@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { docsConfig } from "@/config/docs";
 import { siteConfig } from "@/config/site";
 import { absoluteUrl } from "@/utils";
+import { notFound } from "next/navigation"
 
 interface DocPageProps {
   params: {
@@ -9,8 +10,8 @@ interface DocPageProps {
   };
 }
 
-function getDocFromParams({ params }: DocPageProps) {
-  const slug = params.slug?.join("/") || "";
+async function getDocFromParams({ params }: DocPageProps) {
+  const slug = (await params).slug?.join("/") || "";
   const docs = docsConfig.sidebarNav.flatMap((doc) => doc.items);
   const doc = docs.find((doc) => doc.href?.toLowerCase()?.includes(slug));
 
@@ -24,9 +25,9 @@ function getDocFromParams({ params }: DocPageProps) {
 export async function generateMetadata({
   params,
 }: DocPageProps): Promise<Metadata> {
-  const doc = getDocFromParams({ params });
+  const doc = await getDocFromParams({ params });
 
-  if (!doc) {
+  if (!doc || !doc.href) {
     return {};
   }
 
@@ -57,11 +58,17 @@ export async function generateMetadata({
   };
 }
 
-export default function DocPage({ params }: DocPageProps) {
-  const doc = getDocFromParams({ params });
+export default async function DocPage({ params }: DocPageProps) {
+  const doc = await getDocFromParams({ params });
+
+  if (!doc) {
+    notFound()
+  }
 
   return (
-    <div className="flex flex-col items-center justify-between p-24">
+    <div className="flex flex-col justify-between py-24 px-8">
+      <h1>{doc?.title}</h1>
+
       Hello Doc {doc?.title}!
     </div>
   );

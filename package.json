@@ -13,6 +13,10 @@
     "start": "next start",
     "lint": "biome lint . --fix",
     "format": "biome format --write .",
+    "test:e2e": "playwright test",
+    "test:e2e:ci": "playwright test --config=playwright.ci.config.ts",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:report": "playwright show-report",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -40,6 +44,7 @@
     "@biomejs/biome": "^1.9.4",
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
+    "@playwright/test": "^1.49.1",
     "@radix-ui/react-switch": "^1.1.2",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.9",

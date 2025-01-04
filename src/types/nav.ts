@@ -2,7 +2,7 @@ import type { Icons } from "@/components/Icons";
 
 export interface NavItem {
   title: string;
-  href: string;
+  href?: string;
   description?: string;
   disabled?: boolean;
   external?: boolean;
