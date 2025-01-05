@@ -5,7 +5,6 @@ import * as React from "react";
 
 import { Index } from "@/__registry__";
 import { CopyButton } from "@/components/copy-button";
-import { Icons } from "@/components/icons";
 import { StyleSwitcher } from "@/components/style-switcher";
 import { ThemeWrapper } from "@/components/theme-wrapper";
 import { useConfig } from "@/hooks/use-config";
@@ -18,6 +17,7 @@ import {
   TabsTrigger,
 } from "@/registry/new-york/ui/tabs";
 import { styles } from "@/registry/registry-styles";
+import { Icons } from "./icons";
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;
