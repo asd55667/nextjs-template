@@ -48,6 +48,7 @@
     }
   },
   "files": {
+    "include": ["src", "content"],
     "ignore": [
       "node_modules",
       ".next",
