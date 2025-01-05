@@ -35,7 +35,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "20.18.1"
 
       - name: Setup pnpm
         # You may pin to the exact commit or the version.
@@ -65,8 +65,12 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: pnpm install
+      - name: Build Registry
+        run: pnpm run build:registry
+      - name: Build Docs
+        run: pnpm run build:docs
       - name: Build with Next.js
-        run: pnpm next build
+        run: pnpm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
