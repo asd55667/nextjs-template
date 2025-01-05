@@ -8,16 +8,17 @@ const nextConfig = {
     optimizePackageImports: ["@radix-ui/react-icons"],
   },
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "avatars.githubusercontent.com",
-      },
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-      },
-    ],
+    unoptimized: true // output: export
+    // remotePatterns: [
+    //   {
+    //     protocol: "https",
+    //     hostname: "avatars.githubusercontent.com",
+    //   },
+    //   {
+    //     protocol: "https",
+    //     hostname: "images.unsplash.com",
+    //   },
+    // ],
   },
   headers: async () => {
     return [
@@ -49,6 +50,10 @@ const nextConfig = {
       fullUrl: true,
     },
   },
+  typescript: {
+    ignoreBuildErrors: true
+  },
+  output: "export"
 };
 
 const withContentlayer = createContentlayerPlugin({

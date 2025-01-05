@@ -59,7 +59,7 @@ export function MobileNav() {
                 item.href && (
                   <MobileLink
                     key={item.href}
-                    href={item.href}
+                    href={{ pathname: item.href }}
                     onOpenChange={setOpen}
                   >
                     {item.title}
@@ -77,7 +77,7 @@ export function MobileNav() {
                       {!item.disabled &&
                         (item.href ? (
                           <MobileLink
-                            href={item.href}
+                            href={{ pathname: item.href }}
                             onOpenChange={setOpen}
                             className="text-muted-foreground"
                           >
@@ -102,7 +102,7 @@ export function MobileNav() {
   );
 }
 
-interface MobileLinkProps extends LinkProps {
+interface MobileLinkProps extends LinkProps<string> {
   onOpenChange?: (open: boolean) => void;
   children: React.ReactNode;
   className?: string;
@@ -120,7 +120,7 @@ function MobileLink({
     <Link
       href={href}
       onClick={() => {
-        router.push(href.toString());
+        router.push(href.toString() as `/docs/${string}`);
         onOpenChange?.(false);
       }}
       className={cn("text-base", className)}

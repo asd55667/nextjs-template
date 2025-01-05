@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es2022",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -20,11 +24,21 @@
       }
     ],
     "paths": {
-      "@/*": ["src/*"],
-      "types/*": ["src/types/*"],
-      "contentlayer/generated": [".contentlayer/generated"]
+      "@/*": [
+        "src/*"
+      ],
+      "types/*": [
+        "src/types/*"
+      ],
+      "contentlayer/generated": [
+        ".contentlayer/generated"
+      ]
     },
-    "types": ["react", "react-dom", "next"],
+    "types": [
+      "react",
+      "react-dom",
+      "next"
+    ],
     "strictNullChecks": true,
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
@@ -42,6 +56,9 @@
     "**/*.tsx",
     ".contentlayer/generated",
     "next-env.d.ts",
+    ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

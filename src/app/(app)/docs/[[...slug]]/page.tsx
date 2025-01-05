@@ -15,14 +15,19 @@ import { absoluteUrl, cn } from "@/lib/utils";
 import { badgeVariants } from "@/registry/new-york/ui/badge";
 import { allDocs } from "contentlayer/generated";
 
+type BaseParams = {
+  slug: string[];
+};
+
 interface DocPageProps {
-  params: {
-    slug: string[];
-  };
+  params: BaseParams; // output: export
+  // params: Promise<BaseParams>;
 }
 
 async function getDocFromParams({ params }: DocPageProps) {
-  const { slug } = await params;
+  const { slug } = params; // output: export
+  // const { slug } = await params;
+
   const slugs = slug?.join("/") || "";
   const doc = allDocs.find((doc) => doc.slugAsParams === slugs);
 
@@ -72,9 +77,12 @@ export async function generateMetadata({
 export async function generateStaticParams(): Promise<
   DocPageProps["params"][]
 > {
-  return allDocs.map((doc) => ({
-    slug: doc.slugAsParams.split("/"),
-  }));
+  // output: export
+  return [{ slug: [""] }, { slug: ["theming"] }, { slug: ["dark-mode"] }];
+
+  // return allDocs.map((doc) => (Promise.resolve({
+  //   slug: doc.slugAsParams.split("/"),
+  // })));
 }
 
 export default async function DocPage({ params }: DocPageProps) {
@@ -108,7 +116,7 @@ export default async function DocPage({ params }: DocPageProps) {
           <div className="flex items-center space-x-2 pt-4">
             {doc.links?.doc && (
               <Link
-                href={doc.links.doc}
+                href={{ pathname: doc.links.doc }}
                 target="_blank"
                 rel="noreferrer"
                 className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
@@ -119,7 +127,7 @@ export default async function DocPage({ params }: DocPageProps) {
             )}
             {doc.links?.api && (
               <Link
-                href={doc.links.api}
+                href={{ pathname: doc.links.api }}
                 target="_blank"
                 rel="noreferrer"
                 className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}

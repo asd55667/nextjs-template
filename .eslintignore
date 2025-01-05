@@ -1,0 +1,10 @@
+node_modules/
+target/
+.next/
+build/
+dist/
+
+/templates/
+/fixtures/
+src/__registry__
+src/registry

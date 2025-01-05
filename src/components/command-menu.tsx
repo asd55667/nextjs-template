@@ -2,8 +2,8 @@
 
 import type { DialogProps } from "@radix-ui/react-dialog";
 import { Circle, File, Laptop, Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
+import { useTheme } from "next-themes";
 import * as React from "react";
 
 import { docsConfig } from "@/config/docs";
@@ -78,7 +78,9 @@ export function CommandMenu({ ...props }: DialogProps) {
                   key={navItem.href}
                   value={navItem.title}
                   onSelect={() => {
-                    runCommand(() => router.push(navItem.href as string));
+                    runCommand(() =>
+                      router.push(navItem.href as `/docs/${string}`),
+                    );
                   }}
                 >
                   <File />
@@ -93,7 +95,9 @@ export function CommandMenu({ ...props }: DialogProps) {
                   key={navItem.href}
                   value={navItem.title}
                   onSelect={() => {
-                    runCommand(() => router.push(navItem.href as string));
+                    runCommand(() =>
+                      router.push(navItem.href as `/docs/${string}`),
+                    );
                   }}
                 >
                   <div className="mr-2 flex h-4 w-4 items-center justify-center">

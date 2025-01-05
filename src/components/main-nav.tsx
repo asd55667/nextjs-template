@@ -20,7 +20,7 @@ export function MainNav() {
       </Link>
       <nav className="flex items-center gap-4 text-sm xl:gap-6">
         <Link
-          href="/docs"
+          href={{ pathname: "/docs" }}
           className={cn(
             "transition-colors hover:text-foreground/80",
             pathname === "/docs" ? "text-foreground" : "text-foreground/80",

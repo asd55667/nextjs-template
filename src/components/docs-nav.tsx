@@ -41,7 +41,7 @@ function DocsNavItems({
         item.href && !item.disabled ? (
           <Link
             key={index}
-            href={item.href}
+            href={{ pathname: item.href }}
             className={cn(
               "group flex h-8 w-full items-center rounded-lg px-2 font-normal text-foreground underline-offset-2 hover:bg-accent hover:text-accent-foreground",
               item.disabled && "cursor-not-allowed opacity-60",

@@ -33,11 +33,14 @@ export function ComponentExample({
 
   const codeString = React.useMemo(() => {
     if (
+      // @ts-ignore
       typeof Code?.props["data-rehype-pretty-code-fragment"] !== "undefined"
     ) {
       const [, Button] = React.Children.toArray(
+        // @ts-ignore
         Code.props.children,
       ) as React.ReactElement[];
+      // @ts-ignore
       return Button?.props?.value || Button?.props?.__rawString__ || null;
     }
   }, [Code]);

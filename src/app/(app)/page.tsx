@@ -22,10 +22,10 @@ export default function IndexPage() {
         </PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">
-            <Link href="/docs">Get Started</Link>
+            <Link href={{ pathname: "/docs" }}>Get Started</Link>
           </Button>
           <Button asChild size="sm" variant="ghost">
-            <Link href="/blocks">Browse Blocks</Link>
+            <Link href={{ pathname: "/blocks" }}>Browse Blocks</Link>
           </Button>
         </PageActions>
       </PageHeader>
