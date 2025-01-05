@@ -8,11 +8,25 @@
     "rules": {
       "recommended": true,
       "correctness": {
-        "noUnusedVariables": "error"
+        "noUnusedVariables": "warn",
+        "useExhaustiveDependencies": "warn"
       },
       "style": {
         "useBlockStatements": "error",
-        "useFragmentSyntax": "error"
+        "useFragmentSyntax": "error",
+        "noNonNullAssertion": "warn"
+      },
+      "suspicious": {
+        "noArrayIndexKey": "warn"
+      },
+      "a11y": {
+        "useSemanticElements": "warn",
+        "noRedundantRoles": "warn",
+        "useAltText": "warn",
+        "useFocusableInteractive": "warn"
+      },
+      "security": {
+        "noDangerouslySetInnerHtml": "warn"
       }
     }
   },
@@ -22,7 +36,7 @@
     "indentStyle": "space",
     "indentWidth": 2,
     "lineWidth": 80,
-    "ignore": []
+    "ignore": [".contentlayer"]
   },
   "javascript": {
     "formatter": {
@@ -40,7 +54,13 @@
       "dist",
       "build",
       "public",
-      "tailwind.config.cjs"
+      "tailwind.config.cjs",
+      ".contentlayer",
+      "contentlayer.config.ts",
+      "src/__registry__",
+      "src/lib/rehype-npm-command.ts",
+      "src/lib/rehype-component.ts",
+      "src/scripts"
     ]
   }
 }

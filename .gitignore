@@ -37,3 +37,6 @@ next-env.d.ts
 
 playwright-report
 test-results
+.contentlayer
+public/r
+src/__registry__

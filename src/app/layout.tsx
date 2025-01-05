@@ -1,18 +1,16 @@
-import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
-import { Suspense } from "react";
-import { ErrorBoundary } from "react-error-boundary";
-
-import { siteConfig } from "@/config/site";
-import { ThemeProvider } from "@/components/provider/ThemeProvider";
-import { SiteHeader } from "@/components/SiteHeader";
-import { SiteFooter } from "@/components/SiteFooter";
-import { LoadingFallback } from "@/components/LoadingFallback";
-import { ErrorFallback } from "@/components/ErrorFallback";
-
 import "@/styles/globals.css";
+import type { Metadata, Viewport } from "next";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+import { ThemeProvider } from "@/components/providers";
+import { TailwindIndicator } from "@/components/tailwind-indicator";
+import { ThemeSwitcher } from "@/components/theme-switcher";
+import { META_THEME_COLORS, siteConfig } from "@/config/site";
+import { fontMono, fontSans } from "@/lib/fonts";
+import { cn } from "@/lib/utils";
+// import { Analytics } from "@/components/analytics"
+import { Toaster as DefaultToaster } from "@/registry/default/ui/toaster";
+import { Toaster as NewYorkSonner } from "@/registry/new-york/ui/sonner";
+import { Toaster as NewYorkToaster } from "@/registry/new-york/ui/toaster";
 
 export const metadata: Metadata = {
   title: {
@@ -67,42 +65,58 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
-  ],
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
+  themeColor: META_THEME_COLORS.light,
 };
 
-export default function RootLayout({
-  children,
-}: {
+interface RootLayoutProps {
   children: React.ReactNode;
-}) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {/* <ErrorBoundary FallbackComponent={ErrorFallback}> */}
+}
 
-          <Suspense fallback={<LoadingFallback />}>
-            <div className="relative flex min-h-screen flex-col bg-background">
-              <SiteHeader />
-              <main className="flex-1">{children}</main>
-              <SiteFooter />
+export default function RootLayout({ children }: RootLayoutProps) {
+  return (
+    <>
+      <html lang="en" suppressHydrationWarning>
+        <head>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              try {
+                if (localStorage.theme === 'dark' || ((!('theme' in localStorage) || localStorage.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  document.querySelector('meta[name="theme-color"]').setAttribute('content', '${META_THEME_COLORS.dark}')
+                }
+              } catch (_) {}
+            `,
+            }}
+          />
+        </head>
+        <body
+          className={cn(
+            "min-h-svh bg-background font-sans antialiased",
+            fontSans.variable,
+            fontMono.variable,
+          )}
+        >
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+            enableColorScheme
+          >
+            <div vaul-drawer-wrapper="">
+              <div className="relative flex min-h-svh flex-col bg-background">
+                {children}
+              </div>
             </div>
-          </Suspense>
-          {/* </ErrorBoundary> */}
-        </ThemeProvider>
-      </body>
-    </html>
+            <TailwindIndicator />
+            <ThemeSwitcher />
+            {/* <Analytics /> */}
+            <NewYorkToaster />
+            <DefaultToaster />
+            <NewYorkSonner />
+          </ThemeProvider>
+        </body>
+      </html>
+    </>
   );
 }

@@ -8,8 +8,7 @@
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:import/recommended",
-    "plugin:import/typescript",
-    "prettier"
+    "plugin:import/typescript"
   ],
   "plugins": [
     "@typescript-eslint",
@@ -27,7 +26,10 @@
     "react/self-closing-comp": "error",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
+    "react/no-unknown-property": "warn",
     "jsx-a11y/alt-text": "warn",
+    "jsx-a11y/heading-has-content": "warn",
+    "jsx-a11y/anchor-has-content": "warn",
     "import/order": [
       "error",
       {
@@ -56,7 +58,9 @@
       }
     ],
     "@typescript-eslint/consistent-type-imports": "error",
-    "@typescript-eslint/no-explicit-any": "warn"
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-empty-object-type": "warn",
+    "@typescript-eslint/ban-ts-comment": "warn"
   },
   "settings": {
     "react": {
