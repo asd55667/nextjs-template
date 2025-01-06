@@ -76,6 +76,17 @@ jobs:
         with:
           path: ./out
 
+      - name: Create Version PR
+        id: changesets
+        uses: changesets/action@v1.4.1
+        with:
+          commit: "chore(release): version packages"
+          title: "chore(release): version packages"
+          version: node .github/changeset-version.js
+          publish: npx changeset publish
+        env:
+          NODE_ENV: "production"
+
   # Deployment job
   deploy:
     environment:
