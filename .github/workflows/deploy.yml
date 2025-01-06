@@ -14,7 +14,7 @@ on:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -99,8 +99,8 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           generateReleaseNotes: true
-          name: Release ${{ env.VERSION }}
           tag: ${{ env.VERSION }}
+          name: Release ${{ env.VERSION }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
   # Deployment job
