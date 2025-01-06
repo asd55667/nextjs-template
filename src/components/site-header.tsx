@@ -1,12 +1,12 @@
 import Link from "next/link";
 
 import { CommandMenu } from "@/components/command-menu";
+import { Icons } from "@/components/icons";
 import { MainNav } from "@/components/main-nav";
 import { MobileNav } from "@/components/mobile-nav";
 import { ModeSwitcher } from "@/components/mode-switcher";
 import { siteConfig } from "@/config/site";
 import { Button } from "@/registry/new-york/ui/button";
-import { Icons } from "./icons";
 
 export function SiteHeader() {
   return (
