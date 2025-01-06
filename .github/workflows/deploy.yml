@@ -100,10 +100,8 @@ jobs:
         with:
           generateReleaseNotes: true
           name: Release ${{ env.VERSION }}
+          tag: ${{ env.VERSION }}
           token: ${{ secrets.GITHUB_TOKEN }}
-
-
-
 
   # Deployment job
   deploy:
