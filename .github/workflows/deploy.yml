@@ -79,7 +79,7 @@ jobs:
 
       - name: Create Version PR
         id: changesets
-        uses: changesets/action@v1.4.1
+        uses: changesets/action@v1.4.9
         with:
           commit: "chore(release): version packages"
           title: "chore(release): version packages"
@@ -88,20 +88,21 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_ENV: "production"
 
+      - name: Get version from package.json
+        id: get_version
+        run: |
+          VERSION=$(jq -r .version < package.json)
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+
       - name: Create Release
         id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        uses: ncipollo/release-action@v1
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body: |
-            Changes in this Release
-            - First Change
-            - Second Change
-          draft: false
-          prerelease: false
+          generateReleaseNotes: true
+          name: Release ${{ env.VERSION }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+
 
 
   # Deployment job
