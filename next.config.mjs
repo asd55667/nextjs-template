@@ -1,4 +1,5 @@
 import { createContentlayerPlugin } from "next-contentlayer2";
+import pkg from './package.json' with { type: "json" };
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -53,7 +54,9 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true
   },
-  output: "export"
+  output: "export",
+  // for github pages
+  basePath: `/${pkg.name}`
 };
 
 const withContentlayer = createContentlayerPlugin({
