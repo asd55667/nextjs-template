@@ -5,7 +5,7 @@ import * as React from "react";
 
 import { Index } from "@/__registry__";
 import { CopyButton } from "@/components/copy-button";
-import { Icons } from "@/components/icons";
+import { Icons } from "@/components/icon";
 import { StyleSwitcher } from "@/components/style-switcher";
 import { ThemeWrapper } from "@/components/theme-wrapper";
 import { useConfig } from "@/hooks/use-config";
