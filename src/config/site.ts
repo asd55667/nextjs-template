@@ -1,11 +1,14 @@
+import pkg from "@/../package.json";
+
 export const siteConfig = {
-  name: "nextjs-template",
-  url: "https://nextjs-template.asd55667.com",
-  ogImage: "https://nextjs-template.asd55667.com/android-chrome-512x512.png",
+  name: pkg.name,
+  url: `https://${pkg.name}.wuchengwei.com`,
+  ogImage:
+    "https://asd55667.github.io/nextjs-template/android-chrome-512x512.png",
   description: "A nextjs template with contentlayer and shadcn/ui.",
   links: {
     twitter: "https://x.com/chengweiwu11709",
-    github: "https://github.com/asd55667/nextjs-template",
+    github: pkg.repository.url,
   } as const,
 };
 

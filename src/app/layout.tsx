@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import type { Metadata, Viewport } from "next";
 
+import pkg from "@/../package.json";
 import { ThemeProvider } from "@/components/providers";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
 import { ThemeSwitcher } from "@/components/theme-switcher";
@@ -26,13 +27,8 @@ export const metadata: Metadata = {
     "Server Components",
     "Radix UI",
   ],
-  authors: [
-    {
-      name: "wcw",
-      url: "https://github.com/asd55667",
-    },
-  ],
-  creator: "wcw",
+  authors: [pkg.author],
+  creator: pkg.author.name,
   openGraph: {
     type: "website",
     locale: "en_US",

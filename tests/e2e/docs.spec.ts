@@ -1,3 +1,4 @@
+import pkg from "@/../package.json" with { type: "json" };
 import { expect, test } from "@playwright/test";
 
 test.describe("Docs Pages", () => {
@@ -5,7 +6,7 @@ test.describe("Docs Pages", () => {
     await page.goto("/docs");
 
     // Check that the page loaded
-    await expect(page).toHaveTitle(/Introduction - nextjs-template/);
+    await expect(page).toHaveTitle(new RegExp(`Introduction - ${pkg.name}`));
     await page.waitForSelector("h1");
     await expect(
       page.locator("h1").filter({ hasText: "Introduction" }),
@@ -16,7 +17,7 @@ test.describe("Docs Pages", () => {
     await page.goto("/docs/theming");
 
     // Check that the page loaded
-    await expect(page).toHaveTitle(/Theming - nextjs-template/);
+    await expect(page).toHaveTitle(new RegExp(`Theming - ${pkg.name}`));
     await page.waitForSelector("h1");
     await expect(
       page.locator("h1").filter({ hasText: "Theming" }),

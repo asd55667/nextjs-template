@@ -1,3 +1,4 @@
+import pkg from '@/../package.json'
 import { siteConfig } from "@/config/site";
 
 export function SiteFooter() {
@@ -13,7 +14,7 @@ export function SiteFooter() {
               rel="noreferrer"
               className="font-medium underline underline-offset-4"
             >
-              wcw
+              {pkg.author.name}
             </a>
             . The source code is available on{" "}
             <a

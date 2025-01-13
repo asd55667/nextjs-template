@@ -1,3 +1,4 @@
+import pkg from "@/../package.json" with { type: "json" };
 import { expect, test } from "@playwright/test";
 
 test.describe("Homepage", () => {
@@ -7,7 +8,7 @@ test.describe("Homepage", () => {
     });
 
     await test.step("Verify page title", async () => {
-      await expect(page).toHaveTitle(/nextjs-template/);
+      await expect(page).toHaveTitle(new RegExp(`${pkg.name}`));
     });
 
     await test.step("Check for header", async () => {
