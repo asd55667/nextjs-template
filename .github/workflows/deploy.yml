@@ -71,6 +71,8 @@ jobs:
         run: pnpm run build:docs
       - name: Build with Next.js
         run: pnpm run build
+        env:
+          PLATFORM: "github pages"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
