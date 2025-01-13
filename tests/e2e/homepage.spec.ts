@@ -7,7 +7,7 @@ test.describe("Homepage", () => {
     });
 
     await test.step("Verify page title", async () => {
-      await expect(page).toHaveTitle(/shadcn\/ui/);
+      await expect(page).toHaveTitle(/nextjs-template/);
     });
 
     await test.step("Check for header", async () => {

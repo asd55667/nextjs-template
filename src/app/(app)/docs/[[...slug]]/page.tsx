@@ -69,7 +69,7 @@ export async function generateMetadata({
       title: doc.title,
       description: doc.description,
       images: [siteConfig.ogImage],
-      creator: "@shadcn",
+      creator: "@chengweiwu11709",
     },
   };
 }

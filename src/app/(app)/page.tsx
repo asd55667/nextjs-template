@@ -25,7 +25,7 @@ export default function IndexPage() {
             <Link href={{ pathname: "/docs" }}>Get Started</Link>
           </Button>
           <Button asChild size="sm" variant="ghost">
-            <Link href={{ pathname: "/blocks" }}>Browse Blocks</Link>
+            <Link href={{ pathname: "/docs" }}>Browse Blocks</Link>
           </Button>
         </PageActions>
       </PageHeader>

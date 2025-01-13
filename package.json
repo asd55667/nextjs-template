@@ -6,6 +6,10 @@
   "type": "module",
   "author": {
     "name": "wcw",
+    "url": "https://github.com/asd55667"
+  },
+  "repository": {
+    "type": "git",
     "url": "https://github.com/asd55667/nextjs-template"
   },
   "scripts": {
@@ -141,5 +145,8 @@
     "**/*.{json,yaml,yml}": [
       "biome format --write --no-errors-on-unmatched --files-ignore-unknown=true"
     ]
+  },
+  "stackblitz": {
+    "startCommand": "pnpm install && pnpm run build:registry && pnpm run build:docs && pnpm run start"
   }
 }

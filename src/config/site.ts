@@ -1,12 +1,11 @@
 export const siteConfig = {
-  name: "shadcn/ui",
-  url: "https://ui.shadcn.com",
-  ogImage: "https://ui.shadcn.com/android-chrome-512x512.png",
-  description:
-    "Beautifully designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source.",
+  name: "nextjs-template",
+  url: "https://nextjs-template.asd55667.com",
+  ogImage: "https://nextjs-template.asd55667.com/android-chrome-512x512.png",
+  description: "A nextjs template with contentlayer and shadcn/ui.",
   links: {
-    twitter: "https://twitter.com/shadcn",
-    github: "https://github.com/shadcn-ui/ui",
+    twitter: "https://x.com/chengweiwu11709",
+    github: "https://github.com/asd55667/nextjs-template",
   } as const,
 };
 

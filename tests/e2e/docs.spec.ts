@@ -5,7 +5,7 @@ test.describe("Docs Pages", () => {
     await page.goto("/docs");
 
     // Check that the page loaded
-    await expect(page).toHaveTitle(/Introduction - shadcn\/ui/);
+    await expect(page).toHaveTitle(/Introduction - nextjs-template/);
     await page.waitForSelector("h1");
     await expect(
       page.locator("h1").filter({ hasText: "Introduction" }),
@@ -16,7 +16,7 @@ test.describe("Docs Pages", () => {
     await page.goto("/docs/theming");
 
     // Check that the page loaded
-    await expect(page).toHaveTitle(/Theming - shadcn\/ui/);
+    await expect(page).toHaveTitle(/Theming - nextjs-template/);
     await page.waitForSelector("h1");
     await expect(
       page.locator("h1").filter({ hasText: "Theming" }),
@@ -27,7 +27,7 @@ test.describe("Docs Pages", () => {
     page,
   }) => {
     const response = await page.goto("/docs/getting-started");
-    expect(response?.status()).toBe(200);
+    expect(response?.status()).toBe(404);
     await expect(
       page.locator("text=This page could not be found"),
     ).toBeVisible();
