@@ -3,7 +3,7 @@ name: Sync Changes to Other Branches
 on:
   push:
     branches:
-      - dynamic-config
+      - main
 
 jobs:
   sync-branches:
@@ -20,10 +20,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      # Step 3: Cherry-pick changes to site
-      - name: Cherry-pick to site
+      # Step 3: Create Pull Request to dynamic-config
+      - name: Cherry-pick to dynamic-config
         run: |
-          git fetch origin site
-          git checkout site
-          git cherry-pick ${{ github.sha }} || (git cherry-pick --abort && echo "No changes to pick for site")
-          git push origin site
+          git fetch origin dynamic-config
+          git checkout dynamic-config
+          git cherry-pick ${{ github.sha }} || (git cherry-pick --abort && echo "No changes to pick for dynamic-config")
+          git push origin dynamic-config
