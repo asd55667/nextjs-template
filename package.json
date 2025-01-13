@@ -21,6 +21,7 @@
     "format": "biome format --write .",
     "typecheck": "contentlayer2 build && tsc --noEmit",
     "build:docs": "contentlayer2 build",
+    "build:routes": "tsx --tsconfig ./tsconfig.scripts.json ./src/scripts/build-static-route.mts",
     "build:registry": "tsx --tsconfig ./tsconfig.scripts.json ./src/scripts/build-registry.mts",
     "test:e2e": "playwright test",
     "test:e2e:ci": "playwright test --config=playwright.ci.config.ts",
