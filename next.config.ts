@@ -28,6 +28,9 @@ function resolveConfig(platform: typeof process.env.PLATFORM): NextConfig {
       unoptimized: true,
     }
     output = "export"
+  }
+
+  if (platform === 'github pages') {
     basePath = process.env.NODE_ENV === "production" ? `/${pkg.name}` : undefined;
   }
 

@@ -13,11 +13,18 @@ You can use this template as a starting point for your next project.
 Biome is used for linting and formatting locally.
 
 ## Deploy to multiple platforms
-- github pages
-- cloudflare pages
-- vercel
 
-[Try it in stackblitz](https://stackblitz.com/github/asd55667/nextjs-template)
+### [github pages](asd55667.github.io/nextjs-template)
+
+### [cloudflare pages](nextjs-template.wuchengwei.com)
+
+> Build command
+
+``` shell
+npx tsx --tsconfig ./tsconfig.scripts.json ./src/scripts/build-registry.mts && npx contentlayer2 build && npx next build
+```
 
 ## Screenshot
 ![](/tests/e2e/homepage.spec.ts-snapshots/homepage-chromium-darwin.png)
+
+[Try it in stackblitz](https://stackblitz.com/github/asd55667/nextjs-template)
