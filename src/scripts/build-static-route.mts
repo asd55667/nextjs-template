@@ -16,7 +16,9 @@ export async function buildStaticRoutes(subPath: string): Promise<StaticRoute[]>
   return files
     .filter((file) => file.endsWith(".mdx"))
     .map((file) => {
-      const slug = file.replace(/\.mdx$/, "");
+      // TODO: display order
+      let slug = file.replace(/\.mdx$/, "");
+      if (slug === 'index') slug = ""
       return {
         slug: [slug],
       };

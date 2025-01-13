@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import "@/styles/mdx.css";
 import Balancer from "react-wrap-balancer";
 
+import routes from "@/__registry__/static-routes.json";
 import { Mdx } from "@/components/mdx-components";
 // import { OpenInV0Cta } from "@/components/open-in-v0-cta";
 import { DocsPager } from "@/components/pager";
@@ -81,7 +82,7 @@ export async function generateStaticParams(): Promise<
     process.env.PLATFORM === "cloudflare pages" ||
     process.env.PLATFORM === "github pages"
   ) {
-    return [{ slug: [""] }, { slug: ["theming"] }, { slug: ["dark-mode"] }];
+    return routes.docs;
   }
 
   return allDocs.map((doc) =>
