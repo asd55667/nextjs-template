@@ -1,0 +1,39 @@
+name: Sync Changes to Other Branches
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync-branches:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Configure Git
+      - name: Set up Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      # Step 3: Create Pull Request to dynamic-config
+      - name: Create Pull Request to dynamic-config
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: dynamic-config
+          commit-message: "Sync changes from main"
+          title: "Sync changes from main to dynamic-config"
+          body: "This PR contains updates from the main branch."
+
+      # Step 4: Create Pull Request to site
+      - name: Create Pull Request to site
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: site
+          commit-message: "Sync changes from main"
+          title: "Sync changes from main to site"
+          body: "This PR contains updates from the main branch."
