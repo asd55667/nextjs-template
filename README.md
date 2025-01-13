@@ -12,6 +12,13 @@ You can use this template as a starting point for your next project.
 
 Biome is used for linting and formatting locally.
 
+## Change Doc Route for SSG
+
+rename the docs directory in `src/app/(app)/docs`
+rename the name field of docsConfig in `src/config/docs.ts`;
+
+For further usage of blogs, stories from this template.
+
 ## Deploy to multiple platforms
 
 ### [github pages](asd55667.github.io/nextjs-template)
