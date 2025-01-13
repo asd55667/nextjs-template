@@ -147,7 +147,7 @@
     ]
   },
   "stackblitz": {
-    "startCommand": "pnpm install && pnpm run build:registry && pnpm run build:docs && pnpm run start",
+    "startCommand": "pnpm install && pnpm run build:registry && pnpm run build:docs && pnpm run dev",
     "env": {
       "STACKBLITZ": "true"
     }
