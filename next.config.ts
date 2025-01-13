@@ -2,13 +2,9 @@ import { createContentlayerPlugin } from "next-contentlayer2";
 import pkg from './package.json' with { type: "json" };
 import type { NextConfig } from "next"
 
-type Platform = 'vercel' | 'netlify' | 'github pages' | "cloudflare pages" | "cloudflare workers" | "vps"
+const nextConfig = resolveConfig(process.env.PLATFORM)
 
-const platform = process.env.PLATFORM as Platform
-
-const nextConfig = resolveConfig(platform)
-
-function resolveConfig(platform: Platform): NextConfig {
+function resolveConfig(platform: typeof process.env.PLATFORM): NextConfig {
   let images: NextConfig['images'] = {
     remotePatterns: [
       {

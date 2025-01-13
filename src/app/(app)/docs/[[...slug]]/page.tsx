@@ -20,13 +20,11 @@ type BaseParams = {
 };
 
 interface DocPageProps {
-  params: BaseParams; // output: export
-  // params: Promise<BaseParams>;
+  params: BaseParams | Promise<BaseParams>;
 }
 
 async function getDocFromParams({ params }: DocPageProps) {
-  const { slug } = params; // output: export
-  // const { slug } = await params;
+  const { slug } = await params;
 
   const slugs = slug?.join("/") || "";
   const doc = allDocs.find((doc) => doc.slugAsParams === slugs);
@@ -77,12 +75,18 @@ export async function generateMetadata({
 export async function generateStaticParams(): Promise<
   DocPageProps["params"][]
 > {
-  // output: export
-  return [{ slug: [""] }, { slug: ["theming"] }, { slug: ["dark-mode"] }];
+  if (
+    process.env.PLATFORM === "cloudflare pages" ||
+    process.env.PLATFORM === "github pages"
+  ) {
+    return [{ slug: [""] }, { slug: ["theming"] }, { slug: ["dark-mode"] }];
+  }
 
-  // return allDocs.map((doc) => (Promise.resolve({
-  //   slug: doc.slugAsParams.split("/"),
-  // })));
+  return allDocs.map((doc) =>
+    Promise.resolve({
+      slug: doc.slugAsParams.split("/"),
+    }),
+  );
 }
 
 export default async function DocPage({ params }: DocPageProps) {
