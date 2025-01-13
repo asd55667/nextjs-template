@@ -1,20 +1,27 @@
+import staticRoutes from "@/__registry__/static-routes.json";
 import type { MainNavItem, SidebarNavItem } from "types/nav";
-
 export interface DocsConfig {
   mainNav: MainNavItem[];
   sidebarNav: SidebarNavItem[];
   name: "docs";
 }
 
+const name: DocsConfig["name"] = "docs";
+
+// // TODO: this behavior will case route direct from /docs/theming to /docs/docs/theming
+// const sidebarNavItems: SidebarNavItem[] = staticRoutes.docs
+//   .filter((doc) => doc.slug[0] !== "index")
+//   .map((doc) => ({
+//     title: doc.slug[0]!,
+//     href: `${name}/${doc.slug[0]}`,
+//     items: [],
+//   }));
+
 export const docsConfig: DocsConfig = {
   mainNav: [
     {
-      title: "Home",
-      href: "/",
-    },
-    {
-      title: "Documentation",
-      href: "/docs",
+      title: "Project",
+      href: `/${name}`,
     },
   ],
   sidebarNav: [
@@ -39,5 +46,5 @@ export const docsConfig: DocsConfig = {
       ],
     },
   ],
-  name: "docs",
+  name,
 };
