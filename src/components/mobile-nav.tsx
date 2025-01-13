@@ -4,7 +4,7 @@ import Link, { type LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
 import * as React from "react";
 
-import { docsConfig } from "@/config/docs";
+import { type DocsConfig, docsConfig } from "@/config/docs";
 import { useMetaColor } from "@/hooks/use-meta-color";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/new-york/ui/button";
@@ -120,7 +120,7 @@ function MobileLink({
     <Link
       href={href}
       onClick={() => {
-        router.push(href.toString() as `/docs/${string}`);
+        router.push(href.toString() as `/${DocsConfig["name"]}/${string}`);
         onOpenChange?.(false);
       }}
       className={cn("text-base", className)}

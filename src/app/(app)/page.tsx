@@ -8,6 +8,7 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header";
+import { docsConfig } from "@/config/docs";
 import { Button } from "@/registry/new-york/ui/button";
 
 export default function IndexPage() {
@@ -22,10 +23,10 @@ export default function IndexPage() {
         </PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">
-            <Link href={{ pathname: "/docs" }}>Get Started</Link>
+            <Link href={{ pathname: `${docsConfig.name}` }}>Get Started</Link>
           </Button>
           <Button asChild size="sm" variant="ghost">
-            <Link href={{ pathname: "/docs" }}>Browse Blocks</Link>
+            <Link href={{ pathname: `${docsConfig.name}` }}>Browse Blocks</Link>
           </Button>
         </PageActions>
       </PageHeader>

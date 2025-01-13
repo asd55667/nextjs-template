@@ -3,6 +3,7 @@ import type { MainNavItem, SidebarNavItem } from "types/nav";
 export interface DocsConfig {
   mainNav: MainNavItem[];
   sidebarNav: SidebarNavItem[];
+  name: "docs";
 }
 
 export const docsConfig: DocsConfig = {
@@ -38,4 +39,5 @@ export const docsConfig: DocsConfig = {
       ],
     },
   ],
+  name: "docs",
 };

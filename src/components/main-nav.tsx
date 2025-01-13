@@ -4,8 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { Icons } from "@/components/icon";
+import { docsConfig } from "@/config/docs";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
+import { capitalize } from "lodash";
 
 export function MainNav() {
   const pathname = usePathname();
@@ -20,13 +22,15 @@ export function MainNav() {
       </Link>
       <nav className="flex items-center gap-4 text-sm xl:gap-6">
         <Link
-          href={{ pathname: "/docs" }}
+          href={{ pathname: `/${docsConfig.name}` }}
           className={cn(
             "transition-colors hover:text-foreground/80",
-            pathname === "/docs" ? "text-foreground" : "text-foreground/80",
+            pathname === `/${docsConfig.name}`
+              ? "text-foreground"
+              : "text-foreground/80",
           )}
         >
-          Docs
+          {capitalize(docsConfig.name)}
         </Link>
       </nav>
     </div>

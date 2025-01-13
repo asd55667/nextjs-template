@@ -2,11 +2,11 @@
 
 import type { DialogProps } from "@radix-ui/react-dialog";
 import { Circle, File, Laptop, Moon, Sun } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
+import { useRouter } from "next/navigation";
 import * as React from "react";
 
-import { docsConfig } from "@/config/docs";
+import { type DocsConfig, docsConfig } from "@/config/docs";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/new-york/ui/button";
 import {
@@ -79,7 +79,9 @@ export function CommandMenu({ ...props }: DialogProps) {
                   value={navItem.title}
                   onSelect={() => {
                     runCommand(() =>
-                      router.push(navItem.href as `/docs/${string}`),
+                      router.push(
+                        navItem.href as `/${DocsConfig["name"]}/${string}`,
+                      ),
                     );
                   }}
                 >
@@ -96,7 +98,9 @@ export function CommandMenu({ ...props }: DialogProps) {
                   value={navItem.title}
                   onSelect={() => {
                     runCommand(() =>
-                      router.push(navItem.href as `/docs/${string}`),
+                      router.push(
+                        navItem.href as `/${DocsConfig["name"]}/${string}`,
+                      ),
                     );
                   }}
                 >

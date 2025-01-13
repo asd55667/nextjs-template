@@ -9,11 +9,13 @@ import { Mdx } from "@/components/mdx-components";
 // import { OpenInV0Cta } from "@/components/open-in-v0-cta";
 import { DocsPager } from "@/components/pager";
 import { DashboardTableOfContents } from "@/components/toc";
+import { docsConfig } from "@/config/docs";
 import { siteConfig } from "@/config/site";
 import { getTableOfContents } from "@/lib/toc";
 import { absoluteUrl, cn } from "@/lib/utils";
 import { badgeVariants } from "@/registry/new-york/ui/badge";
 import { allDocs } from "contentlayer/generated";
+import { capitalize } from "lodash";
 
 type BaseParams = {
   slug: string[];
@@ -102,7 +104,7 @@ export default async function DocPage({ params }: DocPageProps) {
     <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
       <div className="mx-auto w-full min-w-0 max-w-2xl">
         <div className="mb-4 flex items-center space-x-1 text-sm leading-none text-muted-foreground">
-          <div className="truncate">Docs</div>
+          <div className="truncate">{capitalize(docsConfig.name)}</div>
           <ChevronRight className="h-3.5 w-3.5" />
           <div className="text-foreground">{doc.title}</div>
         </div>
@@ -125,7 +127,7 @@ export default async function DocPage({ params }: DocPageProps) {
                 rel="noreferrer"
                 className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
               >
-                Docs
+                {capitalize(docsConfig.name)}
                 <ExternalLink className="h-3 w-3" />
               </Link>
             )}
