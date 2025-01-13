@@ -17,4 +17,7 @@ Biome is used for linting and formatting locally.
 - cloudflare pages
 - vercel
 
-[Try it in stackblitz](https://stackblitz.com/github/asd55667/nextjs-template/tree/main?file=package.json)
+[Try it in stackblitz](https://stackblitz.com/github/asd55667/nextjs-template)
+
+## Screenshot
+![](/tests/e2e/homepage.spec.ts-snapshots/homepage-chromium-darwin.png)
