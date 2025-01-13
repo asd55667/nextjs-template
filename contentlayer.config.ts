@@ -12,6 +12,8 @@ import remarkGfm from "remark-gfm";
 import { visit } from "unist-util-visit";
 import type { Pluggable, Plugin } from "unified";
 
+import { docsConfig } from "./src/config/docs";
+import { capitalize } from "./src/utils";
 import { rehypeComponent } from "./src/lib/rehype-component";
 import { rehypeNpmCommand } from "./src/lib/rehype-npm-command";
 
@@ -40,8 +42,8 @@ const LinksProperties = defineNestedType(() => ({
 }));
 
 export const Doc = defineDocumentType(() => ({
-  name: "Doc",
-  filePathPattern: `docs/**/*.mdx`,
+  name: capitalize(docsConfig.name),
+  filePathPattern: `${docsConfig.name}/**/*.mdx`,
   contentType: "mdx",
   fields: {
     title: {

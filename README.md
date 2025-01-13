@@ -15,7 +15,9 @@ Biome is used for linting and formatting locally.
 ## Change Doc Route for SSG
 
 rename the docs directory in `src/app/(app)/docs`
+rename the docs directory in `content/docs`
 rename the name field of docsConfig in `src/config/docs.ts`;
+rename `allDocs` imported from `contentlayer/generated`
 
 For further usage of blogs, stories from this template.
 
