@@ -26,7 +26,7 @@
     "test:e2e:ci": "playwright test --config=playwright.ci.config.ts",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:report": "playwright show-report",
-    "prepare": "if [ \"$STACKBLITZ\" != \"true\" ]; then husky; fi",
+    "prepare": "node ./scripts/install-husky.js",
     "release": "changeset version"
   },
   "dependencies": {
@@ -147,6 +147,9 @@
     ]
   },
   "stackblitz": {
-    "startCommand": "pnpm install && pnpm run build:registry && pnpm run build:docs && pnpm run start"
+    "startCommand": "pnpm install && pnpm run build:registry && pnpm run build:docs && pnpm run start",
+    "env": {
+      "STACKBLITZ": "true"
+    }
   }
 }
