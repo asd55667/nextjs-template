@@ -1,4 +1,4 @@
-import staticRoutes from "@/__registry__/static-routes.json";
+// import staticRoutes from "@/__registry__/static-routes.json";
 import type { MainNavItem, SidebarNavItem } from "types/nav";
 export interface DocsConfig {
   mainNav: MainNavItem[];
