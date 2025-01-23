@@ -1,9 +1,9 @@
 // @ts-nocheck
 "use client";
 
+import { useMDXComponent } from "next-contentlayer2/hooks";
 import Image from "next/image";
 import Link from "next/link";
-import { useMDXComponent } from "next-contentlayer2/hooks";
 import type * as React from "react";
 
 import { Callout } from "@/components/callout";
@@ -13,7 +13,6 @@ import { ComponentExample } from "@/components/component-example";
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentSource } from "@/components/component-source";
 import { CopyButton } from "@/components/copy-button";
-import { FrameworkDocs } from "@/components/framework-docs";
 import { StyleWrapper } from "@/components/style-wrapper";
 import { useConfig } from "@/hooks/use-config";
 import type { Event } from "@/lib/events";
@@ -298,12 +297,6 @@ const components = {
       )}
       {...props}
     />
-  ),
-  FrameworkDocs: ({
-    className,
-    ...props
-  }: React.ComponentProps<typeof FrameworkDocs>) => (
-    <FrameworkDocs className={cn(className)} {...props} />
   ),
   Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
