@@ -18,10 +18,18 @@ Biome is used for linting and formatting locally.
 
 ### [cloudflare pages](nextjs-template.wuchengwei.com)
 
-> Build command
+Build command
 
 ``` shell
-npx tsx --tsconfig ./tsconfig.scripts.json ./src/scripts/build-registry.mts && npx contentlayer2 build && npx next build
+npx tsx --tsconfig ./tsconfig.scripts.json ./src/scripts/build-registry.mts && npx next build
+```
+
+### [vercel](https://nextjs-template-psi-six.vercel.app/)
+
+Build command
+
+``` shell
+tsx --tsconfig ./tsconfig.scripts.json ./src/scripts/build-registry.mts && next build
 ```
 
 ## Screenshot
