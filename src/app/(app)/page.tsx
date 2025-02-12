@@ -1,67 +1,69 @@
-import Image from "next/image";
-import Link from "next/link";
-
-import { Announcement } from "@/components/announcement";
 import {
-  PageActions,
-  PageHeader,
-  PageHeaderDescription,
-  PageHeaderHeading,
-} from "@/components/page-header";
-import { docsConfig } from "@/config/docs";
-import { Button } from "@/registry/new-york/ui/button";
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/registry/new-york/ui/card";
+import { FileText, Keyboard, Palette } from "lucide-react";
+import type React from "react"; // Added import for React
 
-export default function IndexPage() {
+export default function Home() {
   return (
-    <>
-      <PageHeader>
-        <Announcement />
-        <PageHeaderHeading>Build your component library</PageHeaderHeading>
-        <PageHeaderDescription>
-          Beautifully designed components that you can copy and paste into your
-          apps. Made with Tailwind CSS. Open source.
-        </PageHeaderDescription>
-        <PageActions>
-          <Button asChild size="sm">
-            <Link href={{ pathname: `${docsConfig.name}` }}>Get Started</Link>
-          </Button>
-          <Button asChild size="sm" variant="ghost">
-            <Link href={{ pathname: `${docsConfig.name}` }}>Browse Blocks</Link>
-          </Button>
-        </PageActions>
-      </PageHeader>
+    <div className="flex min-h-screen flex-col items-center justify-center bg-background text-foreground">
+      <main className="container mx-auto px-4 py-16 flex flex-col items-center">
+        <h1 className="text-4xl font-bold mb-4 text-center">Nextjs Template</h1>
+        <p className="text-xl text-muted-foreground max-w-2xl text-center mb-12">
+          A simple template just based on the website of shadcn/ui.
+        </p>
 
-      <div className="border-grid border-b">
-        <div className="container-wrapper">
-          <div className="container py-4">
-            <div className="[&>a:first-child]:text-primary">Examples Nav</div>
-          </div>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 w-full max-w-4xl mb-12">
+          <FeatureCard
+            icon={<Palette className="h-6 w-6" />}
+            title="Design and Layout"
+            description="Utilizes the clean and modern design principles of shadcn/ui."
+          />
+          <FeatureCard
+            icon={<Palette className="h-6 w-6" />}
+            title="Dark Mode"
+            description="Seamless dark mode integration for improved user experience."
+          />
+          <FeatureCard
+            icon={<Keyboard className="h-6 w-6" />}
+            title="Command Menu (⌘ K)"
+            description="Quick access to actions with a sleek command menu."
+          />
+          <FeatureCard
+            icon={<FileText className="h-6 w-6" />}
+            title="MDX with Contentlayer"
+            description="Easy content management using MDX and Contentlayer."
+          />
         </div>
-      </div>
+      </main>
+    </div>
+  );
+}
 
-      <div className="container-wrapper">
-        <div className="container py-6">
-          <section className="overflow-hidden rounded-lg border bg-background shadow-md md:hidden md:shadow-xl">
-            <Image
-              src="/examples/cards-light.png"
-              width={1280}
-              height={1214}
-              alt="mobile demo light"
-              className="block dark:hidden"
-            />
-            <Image
-              src="/examples/cards-dark.png"
-              width={1280}
-              height={1214}
-              alt="mobile demo dark"
-              className="hidden dark:block"
-            />
-          </section>
-          <section className="hidden md:block [&>div]:p-0">
-            Example Demo
-          </section>
-        </div>
-      </div>
-    </>
+function FeatureCard({
+  icon,
+  title,
+  description,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}) {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2">
+          {icon}
+          <span>{title}</span>
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        <CardDescription>{description}</CardDescription>
+      </CardContent>
+    </Card>
   );
 }
