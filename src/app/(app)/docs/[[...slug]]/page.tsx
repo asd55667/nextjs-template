@@ -79,7 +79,12 @@ export async function generateStaticParams(): Promise<
     process.env.PLATFORM === "cloudflare pages" ||
     process.env.PLATFORM === "github pages"
   ) {
-    return [{ slug: [""] }, { slug: ["theming"] }, { slug: ["dark-mode"] }];
+    return [
+      { slug: [""] },
+      { slug: ["theming"] },
+      { slug: ["dark-mode"] },
+      { slug: ["deploy"] },
+    ];
   }
 
   return allDocs.map((doc) =>
