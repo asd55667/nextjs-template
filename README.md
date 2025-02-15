@@ -30,7 +30,7 @@ For further usage of blogs, stories from this template.
 Build command
 
 ``` shell
-npx tsx --tsconfig ./tsconfig.scripts.json ./src/scripts/build-registry.mts && npx next build
+npx tsx --tsconfig ./tsconfig.scripts.json ./src/scripts/build-registry.mts && npx tsx --tsconfig ./tsconfig.scripts.json ./src/scripts/build-static-route.mts && npx next build
 ```
 
 ### [vercel](https://nextjs-template-psi-six.vercel.app/)
@@ -38,7 +38,7 @@ npx tsx --tsconfig ./tsconfig.scripts.json ./src/scripts/build-registry.mts && n
 Build command
 
 ``` shell
-tsx --tsconfig ./tsconfig.scripts.json ./src/scripts/build-registry.mts && next build
+tsx --tsconfig ./tsconfig.scripts.json ./src/scripts/build-registry.mts && tsx --tsconfig ./tsconfig.scripts.json ./src/scripts/build-static-route.mts && npx next build
 ```
 
 ## Screenshot

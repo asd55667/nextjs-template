@@ -14,7 +14,7 @@ See [detail](https://github.com/asd55667/nextjs-template/blob/main/next.config.t
 Build command
 
 ```sh
-npx tsx --tsconfig ./tsconfig.scripts.json ./src/scripts/build-registry.mts && npx next build
+npx tsx --tsconfig ./tsconfig.scripts.json ./src/scripts/build-registry.mts && npx tsx --tsconfig ./tsconfig.scripts.json ./src/scripts/build-static-route.mts && npx next build
 ```
 
 **Environment Variable**
@@ -41,7 +41,7 @@ rename `src/components/icons.tsx` to another name, e.g. `src/components/my-icons
 Build command
 
 ```sh
-tsx --tsconfig ./tsconfig.scripts.json ./src/scripts/build-registry.mts && next build
+tsx --tsconfig ./tsconfig.scripts.json ./src/scripts/build-registry.mts && tsx --tsconfig ./tsconfig.scripts.json ./src/scripts/build-static-route.mts && npx next build
 ```
 
 **Environment Variable**
