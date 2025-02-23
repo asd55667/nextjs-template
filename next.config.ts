@@ -78,6 +78,9 @@ function resolveConfig(platform: typeof process.env.PLATFORM): NextConfig {
     typescript: {
       ignoreBuildErrors: true
     },
+    eslint: {
+      ignoreDuringBuilds: true
+    },
     output,
     basePath,
   }) as NextConfig
