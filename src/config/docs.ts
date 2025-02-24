@@ -48,6 +48,11 @@ export const docsConfig: DocsConfig = {
           href: "/docs/deploy",
           items: [],
         },
+        {
+          title: "Branch Management",
+          href: "/docs/branch-management",
+          items: [],
+        },
       ],
     },
   ],
