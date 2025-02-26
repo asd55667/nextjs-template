@@ -41,7 +41,7 @@ function resolveConfig(platform: typeof process.env.PLATFORM): NextConfig {
   return ({
     reactStrictMode: true,
     experimental: {
-      typedRoutes: true,
+      // typedRoutes: true,
       optimizePackageImports: ["@radix-ui/react-icons"],
     },
     images,
