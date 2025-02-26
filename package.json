@@ -13,7 +13,7 @@
     "url": "https://github.com/asd55667/nextjs-template"
   },
   "scripts": {
-    "dev": "pnpm run build:registry && pnpm run build:routes && next dev",
+    "dev": "pnpm run build:registry && pnpm run build:routes && next dev --turbo",
     "build": "pnpm run build:registry && pnpm run build:routes && next build",
     "start": "next start",
     "lint": "next lint . --fix",
