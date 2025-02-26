@@ -24,3 +24,21 @@ Furthermore, this branch is used for synchronizing the design system with [shadc
 `dynamic-config` is for the dynamic configuration, especially for routes and metadata.
 For example, I will use doc page to display the blog post, the route should not be named as `/docs/[slug]`,
  but `/blogs/[slug]` instead for clarity.
+
+**add remote**
+
+```sh
+git remote add base https://github.com/asd55667/nextjs-template
+```
+
+**update when sync changes from remote**
+
+```sh
+git fetch base
+```
+
+**merge changes from remote**
+
+```sh
+git merge base/dynamic-config
+```
