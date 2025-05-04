@@ -17,6 +17,8 @@ import { capitalize } from "./src/lib/utils";
 import { rehypeComponent } from "./src/lib/rehype-component";
 import { rehypeNpmCommand } from "./src/lib/rehype-npm-command";
 
+import pkg from "./package.json";
+
 /** @type {import('contentlayer/source-files').ComputedFields} */
 const computedFields = {
   slug: {
@@ -43,7 +45,7 @@ const LinksProperties = defineNestedType(() => ({
 
 export const Doc = defineDocumentType(() => ({
   name: capitalize(docsConfig.name),
-  filePathPattern: `${docsConfig.name}/**/*.mdx`,
+  filePathPattern: pkg.private ? `${docsConfig.name}/index.mdx` : `${docsConfig.name}/**/*.mdx`,
   contentType: "mdx",
   fields: {
     title: {
