@@ -26,7 +26,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: "pnpm run dev",
+    command: "PLATFORM='cloudflare pages' pnpm run build && pnpm exec serve out -p 3000 --no-clipboard -L",
     url: "http://localhost:3000",
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,
