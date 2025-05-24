@@ -43,9 +43,17 @@ const LinksProperties = defineNestedType(() => ({
   },
 }));
 
+function privateDocs(isPrivate: boolean) {
+  const ignoreList = ["branch-management", "dark-mode", 'theming', 'deploy'];
+  if (!isPrivate) {
+    return `${docsConfig.name}/**/*.mdx`;
+  }
+  return `${docsConfig.name}/**/!(${ignoreList.join('|')}).mdx`;
+};
+
 export const Doc = defineDocumentType(() => ({
   name: capitalize(docsConfig.name),
-  filePathPattern: pkg.private ? `${docsConfig.name}/index.mdx` : `${docsConfig.name}/**/*.mdx`,
+  filePathPattern: privateDocs(pkg.private),
   contentType: "mdx",
   fields: {
     title: {
